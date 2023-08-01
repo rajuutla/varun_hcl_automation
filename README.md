@@ -1,3 +1,0 @@
-
-Git clone
-mvn test
