@@ -1,19 +1,30 @@
 package com.hcl.withoutframework;
 
 import java.time.Duration;
-import java.util.Set;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.hcl.baseframework.DriverUtils;
+
 public class SignupTest {
+	
+	
+	//1. Want the driver to be initialized as a common method
+	
+	WebDriver driver = null;
+	
+	@BeforeMethod
+	public void setup() {
+		driver = DriverUtils.getDriver("edge");
+	}
 
 	@Test (groups= {"smoke"})
 	public void singUp() {
@@ -39,11 +50,7 @@ public class SignupTest {
 			Then validate that signup is successful
 		 */
 		
-		WebDriver driver = new ChromeDriver();
 		
-		driver.get("https://www.demoblaze.com/index.html");
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		
 		By singUpObj = By.id("signin2");
 		WebElement signupEle = driver.findElement(singUpObj);
@@ -70,15 +77,6 @@ public class SignupTest {
 		System.out.println("Alert actual text = "+actualMessage);
 		alert.accept();
 		
-		String subMenu = "abc, test";
-		
-		String[] subMenus = subMenu.split(",");
-		
-		for(String menu: subMenus) {
-			
-		}
-		
-	
 
 	}
 
