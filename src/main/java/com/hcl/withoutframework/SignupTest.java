@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.hcl.baseframework.DriverUtils;
+import com.hcl.pageobjects.SignUpPage;
 
 public class SignupTest {
 	
@@ -20,10 +21,12 @@ public class SignupTest {
 	//1. Want the driver to be initialized as a common method
 	
 	WebDriver driver = null;
+	SignUpPage signupPage = null;
 	
 	@BeforeMethod
 	public void setup() {
-		driver = DriverUtils.getDriver("edge");
+		driver = DriverUtils.getDriver();
+		signupPage = new SignUpPage(driver);
 	}
 
 	@Test (groups= {"smoke"})
@@ -50,7 +53,13 @@ public class SignupTest {
 			Then validate that signup is successful
 		 */
 		
+		signupPage.clickOnSignUpLink();
+		signupPage.signUp("test1294@abc.com", "abcd123");
+		boolean flag = signupPage.validateSingupSuccess();
+		Assert.assertTrue(flag);
 		
+		
+	/*	
 		
 		By singUpObj = By.id("signin2");
 		WebElement signupEle = driver.findElement(singUpObj);
@@ -64,7 +73,7 @@ public class SignupTest {
 		/*
 		 * try { Thread.sleep(5000); } catch (InterruptedException e) { // TODO
 		 * Auto-generated catch block e.printStackTrace(); }
-		 */
+		 
 		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.alertIsPresent());
@@ -76,7 +85,7 @@ public class SignupTest {
 		
 		System.out.println("Alert actual text = "+actualMessage);
 		alert.accept();
-		
+	*/	
 
 	}
 

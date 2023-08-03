@@ -10,7 +10,9 @@ public class DriverUtils {
 	
 	public static WebDriver driver = null;
 
-	public static WebDriver getDriver(String browserType) {
+	public static WebDriver getDriver() {
+		
+		String browserType = System.getProperty("browser");
 		
 		if (browserType.equals("chrome"))
 			driver = new ChromeDriver();
