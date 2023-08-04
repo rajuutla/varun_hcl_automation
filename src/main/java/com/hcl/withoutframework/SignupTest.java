@@ -55,7 +55,7 @@ public class SignupTest {
 		
 		signupPage.clickOnSignUpLink();
 		signupPage.signUp("test1294@abc.com", "abcd123");
-		boolean flag = signupPage.validateSingupSuccess();
+		boolean flag = signupPage.validateSignupSuccess();
 		Assert.assertTrue(flag);
 		
 		
