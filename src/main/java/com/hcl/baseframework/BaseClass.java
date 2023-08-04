@@ -16,7 +16,6 @@ public class BaseClass {
 		this.driver = driver;
 	}
 	
-	
 	public void clickOnElement(WebElement element) {
 		element.click();
 	}
@@ -35,6 +34,12 @@ public class BaseClass {
 		Alert alert = driver.switchTo().alert();	
 		String message = alert.getText();
 		return message;
+	}
+	
+	public void acceptAlert() {
+		waitForAlertPresence();
+		Alert alert = driver.switchTo().alert();	
+		alert.accept();
 	}
 
 }
