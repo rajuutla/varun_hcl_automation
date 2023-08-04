@@ -30,7 +30,7 @@ public class SignupTest {
 	}
 
 	@Test (groups= {"smoke"})
-	public void singUp() {
+	public void signUp() {
 		
 		// 1. Make the email random
 		// 2. Do the validation with Login method with the same email used in singed up
