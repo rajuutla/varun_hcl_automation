@@ -41,6 +41,10 @@ public class SignUpPage extends BaseClass{
 		
 		typeText(signUpUserName, userEmail);
 		typeText(signUpPassword, password);
+		
+	}
+	
+	public void clickOnSignUpButton() {
 		clickOnElement(signUpButton);
 	}
 	
