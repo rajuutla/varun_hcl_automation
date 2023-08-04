@@ -33,7 +33,7 @@ public class SignupTest {
 	public void signUp() {
 		
 		// 1. Make the email random
-		// 2. Do the validation with Login method with the same email used in singed up
+		// 2. Do the validation with Login method with the same email used in signed up
 		
 		/*
 		  	Given User is on the the home page
@@ -41,7 +41,7 @@ public class SignupTest {
 		  	   - Open the application url 'https://www.demoblaze.com/index.html'
 		  	   - Validate that i am on the home page
 		   	When User clicks on Signup link
-		   	   - Identifying the singup link object ( Locators - ID, NAME, LINK, XAPTH, CSS)
+		   	   - Identifying the signup link object ( Locators - ID, NAME, LINK, XAPTH, CSS)
 		   	<a class="nav-link" href="#" id="signin2" data-toggle="modal" data-target="#signInModal" style="display: block;">Sign up</a>
 		   	   
 		   	   //a[@id='signin2']
@@ -61,8 +61,8 @@ public class SignupTest {
 		
 	/*	
 		
-		By singUpObj = By.id("signin2");
-		WebElement signupEle = driver.findElement(singUpObj);
+		By signUpObj = By.id("signin2");
+		WebElement signupEle = driver.findElement(signUpObj);
 		signupEle.click();
 		
 		driver.findElement(By.id("sign-username")).sendKeys("test1294@abc.com");
