@@ -66,5 +66,11 @@ public class BaseClass {
 		JavascriptExecutor js = null;
 		js.executeScript("arguments[0].scrollIntoView();", element);
 	}
+	
+	public void acceptAlert() {
+		waitForAlertPresence();
+		Alert alert = driver.switchTo().alert();	
+		alert.accept();
+	}
 
 }

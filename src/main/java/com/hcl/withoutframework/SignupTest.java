@@ -11,8 +11,6 @@ import com.hcl.pageobjects.SignUpPage;
 public class SignupTest {
 	
 	
-	//1. Want the driver to be initialized as a common method
-	
 	WebDriver driver = null;
 	SignUpPage signupPage = null;
 	
@@ -50,6 +48,8 @@ public class SignupTest {
 		signupPage.signUp("test1294@abc.com", "abcd123");
 		boolean flag = signupPage.validateSignupSuccess();
 		Assert.assertTrue(flag);
+		
+		
 		
 		
 	/*	
