@@ -46,10 +46,11 @@ public class SignupTest {
 		
 		signupPage.clickOnSignUpLink();
 		signupPage.signUp("test1294@abc.com", "abcd123");
-		boolean flag = signupPage.validateSignupSuccess();
-		Assert.assertTrue(flag);
+		boolean flag1=signupPage.validateSignupSuccess();
 		
+		Assert.assertTrue(flag1);
 		
+		// Testing the stash message
 		
 		
 	/*	
