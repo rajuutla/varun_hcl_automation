@@ -1,8 +1,11 @@
 Feature: Sign In feature
   I want to be able to Sign in the application
+  
+  Background: 
+  	Given User is on the the home page
 
   Scenario: Sign in successful
-    Given User is on the the home page1
+    Given initialize the elements on the page
     When User clicks on Signin link
     And User enters the email "<username>" and password "<password>" on signin popup
     And User clicks on Signin button on the signin popup
