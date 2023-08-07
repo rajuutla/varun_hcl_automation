@@ -3,6 +3,7 @@ package com.hcl.baseframework;
 import java.time.Duration;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -58,6 +59,12 @@ public class BaseClass {
 			return "";
 		}
 		return "";
+	}
+	
+	@SuppressWarnings("null")
+	public void scrollPage(WebElement element) {
+		JavascriptExecutor js = null;
+		js.executeScript("arguments[0].scrollIntoView();", element);
 	}
 
 }
