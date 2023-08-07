@@ -4,24 +4,26 @@ package com.hcl.withoutframework;
  * @author gvaru
  *
  */
-public class ChildDemoClass {// extends ParentDemoClass {
+public class ChildDemoClass extends ParentDemoClass {
 
 	String name = "Class - Variable ** Child Class **";
 	int a = 2;
 
-	/*
-	 * public ChildDemoClass() { super(); System.out.println(super.name +
-	 * " ** called in constructor **");
-	 * System.out.println("Child Class Constructor"); }
-	 * 
-	 * public void getData() {
-	 * 
-	 * // System.out.println(super.name); String name = "name - Child Class";
-	 * 
-	 * // super.getData(); System.out.println(super.name); System.out.println(name);
-	 * 
-	 * }
-	 */
+	
+	public ChildDemoClass() {
+		super("Varun");
+		System.out.println(super.name + " ** called in constructor **");
+		System.out.println("Child Class Constructor");
+	}
+	  
+	  public void getData() {
+	  
+	  // System.out.println(super.name); String name = "name - Child Class";
+	  
+	  // super.getData(); System.out.println(super.name); System.out.println(name);
+	  
+	  }
+	 
 
 	public void getThisData() {
 		int a = 3;

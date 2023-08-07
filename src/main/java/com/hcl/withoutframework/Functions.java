@@ -57,7 +57,8 @@ public class Functions {
 	}
 
 	/*
-	 * @Test(priority = 1) public void signUp() {
+	 * @Test(priority = 1) 
+	 * public void signUp() {
 	 * 
 	 * driver.findElement(By.xpath("//a[@id='signin2']")).click();
 	 * 

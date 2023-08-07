@@ -3,8 +3,10 @@ package com.hcl.stepdef;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import com.hcl.baseframework.DriverUtils;
+import com.hcl.baseframework.Utilities;
 import com.hcl.pageobjects.SignUpPage;
 
 import io.cucumber.java.AfterStep;
@@ -13,7 +15,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class SignupStepDef {
+public class SignUpStepDef {
 	
 	WebDriver driver = null;
 	SignUpPage signup = null;
@@ -32,7 +34,9 @@ public class SignupStepDef {
 	
 	@When("User enter the new email and password on signup popup")
 	public void user_enter_the_new_email_and_password_on_signup_popup() {
-		signup.signUp("test1294@abc.com", "abcd123");
+		int randomNumber = Utilities.randomNumberGenerator();
+		//signup.signUp("username"+randomNumber+"@gmail.com", "abcd123");
+		signup.signUp("username354@gmail.com", "abcd123");
 	}
 	
 	@When("User click on Signup button on the signup popup")
@@ -42,15 +46,15 @@ public class SignupStepDef {
 	
 	@Then("validate that signup is successful")
 	public void validate_that_signup_is_successful() {
-		System.out.println("Signup successful");
-		signup.validateSignupSuccess();
+		Assert.assertTrue(signup.validateSignupSuccess());
+		
 	}
 	
-	@AfterStep
+	/*@AfterStep
 	public void addScreenShot(Scenario sc) {
 		final byte[] screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 		sc.attach(screen, "image/png", sc.getName());
 		
-	}
+	}*/
 
 }
