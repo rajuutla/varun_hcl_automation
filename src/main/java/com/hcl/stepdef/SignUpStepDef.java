@@ -21,9 +21,13 @@ public class SignUpStepDef {
 	SignUpPage signup = null;
 	
 	@Given("User is on the the home page")
+	public void initialize_the_browser() {
+		driver = DriverUtils.getDriver();
+	}
+	
+	@Given("initialize the elements on the singup page")
 	public void user_is_on_the_the_home_page() {
 		System.out.println("I am on the home page");
-		driver = DriverUtils.getDriver();
 		signup = new SignUpPage(driver);
 	}
 	

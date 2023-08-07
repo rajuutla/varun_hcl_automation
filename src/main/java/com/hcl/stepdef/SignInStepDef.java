@@ -14,11 +14,12 @@ public class SignInStepDef {
 	WebDriver driver = null;
 	SignInPage signIn = null;
 
-	@Given ("User is on the the home page1")
-	public void User_is_on_the_the_home_page() {
-		driver = DriverUtils.getDriver();
-		signIn = new SignInPage(driver);
- 	}
+	
+	  @Given("initialize the elements on the signin page") 
+	  public void User_is_on_the_the_home_page() { 
+		 signIn = new SignInPage(driver); 
+	  }
+	 
 	
 	@When("User clicks on Signin link")
 	public void user_clicks_on_signin_link() {
