@@ -11,11 +11,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseClass {
 
-	WebDriver driver = null;
+	//WebDriver driver = null;   						// Old Code
 
-	public BaseClass(WebDriver driver) {
+	/*public BaseClass(WebDriver driver) {
 		this.driver = driver;
-	}
+	}*/ 												// Old Code
 
 	public void clickOnElement(WebElement element) {
 		element.click();
@@ -26,24 +26,15 @@ public class BaseClass {
 	}
 
 	public void waitForAlertPresence() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  // Old Code
+		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(10));  // New Code
 		wait.until(ExpectedConditions.alertIsPresent());
 	}
-
-	/*
-	 * public String getAlertText() { waitForAlertPresence(); Alert alert =
-	 * driver.switchTo().alert(); String message = alert.getText(); return message;
-	 * }
-	 * 
-	 * public void alertAccept() { waitForAlertPresence(); Alert alert =
-	 * driver.switchTo().alert(); alert.accept();
-	 * 
-	 * }
-	 */
-
-	public String verifyAlert(String alertType) {
+	
+	public String handleAlert(String alertType) {
 		waitForAlertPresence();
-		Alert alert = driver.switchTo().alert();
+		// Alert alert = driver.switchTo().alert();  // old Code
+		Alert alert = DriverUtils.driver.switchTo().alert();  // New Code
 		if (alertType.equals("getText")) {
 			String alertMessage = alert.getText();
 			return alertMessage;
@@ -65,12 +56,6 @@ public class BaseClass {
 	public void scrollPage(WebElement element) {
 		JavascriptExecutor js = null;
 		js.executeScript("arguments[0].scrollIntoView();", element);
-	}
-	
-	public void acceptAlert() {
-		waitForAlertPresence();
-		Alert alert = driver.switchTo().alert();	
-		alert.accept();
 	}
 
 }

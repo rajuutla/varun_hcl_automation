@@ -11,7 +11,7 @@ import com.hcl.baseframework.BaseClass;
 public class PurchaseItemsPage extends BaseClass{
 
 	public PurchaseItemsPage(WebDriver driver) {
-		super(driver);
+		// super(driver);								// Old Code
 		PageFactory.initElements(driver, this);
 	}
 	

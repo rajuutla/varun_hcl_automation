@@ -19,7 +19,7 @@ public class SignUpPage extends BaseClass {
 	Alert alert = null;
 
 	public SignUpPage(WebDriver driver) {
-		super(driver);
+		//super(driver); 							// Old code
 		PageFactory.initElements(driver, this);
 	}
 
@@ -57,18 +57,18 @@ public class SignUpPage extends BaseClass {
 
 	public boolean validateSignupSuccess() {
 
-		String actualMessage = verifyAlert("getText"); // getAlertText();
+		String actualMessage = handleAlert("getText"); // getAlertText();
 		String expectedMessage = "Sign up successful.";
 
 		// return actualMessage.equals(expectedMessage)? true : false;
 		if (actualMessage.equals(expectedMessage)) {
 			System.out.println("Sign In Successful");
-			verifyAlert("accept");
+			handleAlert("accept");
 			return true;
 
 		} else {
-			System.out.println(verifyAlert("getText"));
-			verifyAlert("accept");
+			System.out.println(handleAlert("getText"));
+			handleAlert("accept");
 			clickOnElement(closeButton);
 			return false;
 		}

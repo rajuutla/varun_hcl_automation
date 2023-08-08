@@ -12,7 +12,7 @@ public class SignInPage extends BaseClass{
 	WebDriver driver = null;
 	
 	public SignInPage(WebDriver driver) {
-		super(driver);
+		// super(driver);							// Old Code
 		PageFactory.initElements(driver,this);	
 	}
 	
