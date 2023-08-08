@@ -10,7 +10,8 @@ public class DriverUtils {
 	
 	public static WebDriver driver = null;
 
-	public static void getDriver() {
+	// public static WebDriver getDriver() //  old Code 
+	public static void getDriver() {		// New Code
 		
 		String browserType = System.getProperty("browser");
 		
@@ -23,7 +24,7 @@ public class DriverUtils {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		
-		//return driver;
+		//return driver;  // Old Code
 	}
 
 }

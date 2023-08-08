@@ -1,8 +1,12 @@
 Feature: Add products to cart feature
   User is able to add multiple products to cart
+  
+  Background: 
+  	Given User is on the the home page
+  	
 
-  Scenario: Add products to cart
-    Given User is on the the home page
+  Scenario Outline: Add products to cart
+    Given User has already Signed In
     And Sign in is successful
     When User searches for a product "productName"
     And User adds multiple products "productQty" to cart
