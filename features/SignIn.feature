@@ -2,7 +2,8 @@ Feature: Sign In feature
   I want to be able to Sign in the application
   
   Background: 
-  	Given User is on the the home page
+  	Given User is on the the home page12
+  	
 
   Scenario Outline: Sign in successful
     Given Initialize the elements on the SignIn page
