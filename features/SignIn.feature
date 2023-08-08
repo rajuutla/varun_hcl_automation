@@ -4,14 +4,14 @@ Feature: Sign In feature
   Background: 
   	Given User is on the the home page
 
-  Scenario: Sign in successful
-    Given initialize the elements on the page
+  Scenario: Test the valid credentials login
+    Given initialize the elements on the signin page
     When User clicks on Signin link
     And User enters the email "<username>" and password "<password>" on signin popup
     And User clicks on Signin button on the signin popup
     Then validate that Signin is successful
     
    Examples: 
-  	| username | password  |
-   	| username354@gmail.com | abcd123 |
+  	| username 							| password  |
+   	| username354@gmail.com | abcd123 	|
     

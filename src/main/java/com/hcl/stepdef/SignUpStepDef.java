@@ -1,34 +1,28 @@
 package com.hcl.stepdef;
 
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import com.hcl.baseframework.DriverUtils;
 import com.hcl.baseframework.Utilities;
 import com.hcl.pageobjects.SignUpPage;
 
-import io.cucumber.java.AfterStep;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class SignUpStepDef {
 	
-	WebDriver driver = null;
 	SignUpPage signup = null;
 	
-	@Given("User is on the the home page")
-	public void initialize_the_browser() {
-		driver = DriverUtils.getDriver();
+	@Given("User is on home page")
+	public void user_is_on_home_page() {
+		DriverUtils.getDriver();
 	}
 	
-	@Given("initialize the elements on the singup page")
-	public void user_is_on_the_the_home_page() {
+	@Given("initialize the elements on the signup page")
+	public void initialize_elements_singup_page() {
 		System.out.println("I am on the home page");
-		signup = new SignUpPage(driver);
+		signup = new SignUpPage(DriverUtils.driver);
 	}
 	
 	@When("User click on Signup link")
@@ -51,7 +45,6 @@ public class SignUpStepDef {
 	@Then("validate that signup is successful")
 	public void validate_that_signup_is_successful() {
 		Assert.assertTrue(signup.validateSignupSuccess());
-		
 	}
 	
 	/*@AfterStep

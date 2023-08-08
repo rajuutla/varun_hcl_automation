@@ -1,7 +1,5 @@
 package com.hcl.stepdef;
 
-import org.openqa.selenium.WebDriver;
-
 import com.hcl.baseframework.DriverUtils;
 import com.hcl.pageobjects.SignInPage;
 
@@ -11,13 +9,12 @@ import io.cucumber.java.en.When;
 
 public class SignInStepDef {
 
-	WebDriver driver = null;
 	SignInPage signIn = null;
-
 	
 	  @Given("initialize the elements on the signin page") 
-	  public void User_is_on_the_the_home_page() { 
-		 signIn = new SignInPage(driver); 
+	  public void initialize_elements_signin_page() { 
+		 //DriverUtils.getDriver(); 
+		 signIn = new SignInPage(DriverUtils.driver); 
 	  }
 	 
 	
@@ -40,6 +37,13 @@ public class SignInStepDef {
 	@Then("validate that Signin is successful")
 	public void validate_that_signin_is_successful() {
 		signIn.validateSignInSuccess();
-		
+	}
+	
+	@Given("Login into the application with username {string} and password {string}")
+	public void login_into_app(String userName, String password) {
+		signIn.clickOnSignInLink();
+		signIn.enterUsernamePassword(userName, password);
+		signIn.clickOnSignInButton();
+		signIn.validateSignInSuccess();
 	}
 }

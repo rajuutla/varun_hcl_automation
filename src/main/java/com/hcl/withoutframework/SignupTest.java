@@ -11,13 +11,12 @@ import com.hcl.pageobjects.SignUpPage;
 public class SignupTest {
 	
 	
-	WebDriver driver = null;
 	SignUpPage signupPage = null;
 	
 	@BeforeMethod
 	public void setup() {
-		driver = DriverUtils.getDriver();
-		signupPage = new SignUpPage(driver);
+		DriverUtils.getDriver();
+		signupPage = new SignUpPage(DriverUtils.driver);
 	}
 
 	@Test (groups= {"smoke"})
