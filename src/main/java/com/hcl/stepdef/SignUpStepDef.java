@@ -1,9 +1,5 @@
 package com.hcl.stepdef;
 
-<<<<<<< Updated upstream
-=======
-import org.openqa.selenium.WebDriver;
->>>>>>> Stashed changes
 import org.testng.Assert;
 
 import com.hcl.baseframework.DriverUtils;

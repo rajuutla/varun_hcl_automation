@@ -37,7 +37,7 @@ public class SignInStepDef {
 	@Then("validate that Signin is successful")
 	public void validate_that_signin_is_successful() {
 		signIn.validateSignInSuccess();
-<<<<<<< Updated upstream
+
 	}
 	
 	@Given("Login into the application with username {string} and password {string}")
@@ -46,8 +46,6 @@ public class SignInStepDef {
 		signIn.enterUsernamePassword(userName, password);
 		signIn.clickOnSignInButton();
 		signIn.validateSignInSuccess();
-=======
 
->>>>>>> Stashed changes
 	}
 }
