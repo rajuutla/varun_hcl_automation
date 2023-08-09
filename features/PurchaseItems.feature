@@ -5,8 +5,9 @@ Feature: Add products to cart feature
   	Given User is on the the home page
   	
 
+  # I should have already registered user.
   Scenario Outline: Add products to cart
-    Given User has already Signed In
+    Given Login into the application with username "" and password ""
     And Sign in is successful
     When User searches for a product "productName"
     And User adds multiple products "productQty" to cart

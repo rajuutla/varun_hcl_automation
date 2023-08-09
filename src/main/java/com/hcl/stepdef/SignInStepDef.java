@@ -37,7 +37,6 @@ public class SignInStepDef {
 	@Then("validate that Signin is successful")
 	public void validate_that_signin_is_successful() {
 		signIn.validateSignInSuccess();
-
 	}
 	
 	@Given("Login into the application with username {string} and password {string}")
@@ -45,7 +44,6 @@ public class SignInStepDef {
 		signIn.clickOnSignInLink();
 		signIn.enterUsernamePassword(userName, password);
 		signIn.clickOnSignInButton();
-		signIn.validateSignInSuccess();
 
 	}
 }
