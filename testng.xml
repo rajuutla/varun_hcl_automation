@@ -2,7 +2,7 @@
 <suite parallel="false" name="Suite">
   <test name="Test">
     <classes>
-      <class name="com.hcl.withoutframework.SignupTest"/>
+      <class name="com.hcl.testrunner.TestNGRunner"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
