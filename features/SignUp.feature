@@ -4,7 +4,7 @@ Feature: Sign up feature
   
   Background: 
   	Given User is on the the home page
-
+	
   Scenario: Signup the new user
   	Given Initialize the elements on the SignUp page
     When User clicks on Signup link

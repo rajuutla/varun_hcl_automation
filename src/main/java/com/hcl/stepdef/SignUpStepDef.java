@@ -16,15 +16,12 @@ public class SignUpStepDef {
 	
 	@Given("User is on the the home page")
 	public void Initialize_the_browser() {
-		//driver = DriverUtils.getDriver();  // Old Code
-		DriverUtils.getDriver();		// New Code
-	
+		DriverUtils.getDriver();
 	}
 	
 	@Given("Initialize the elements on the SignUp page")
 	public void Initialize_the_elements_on_the_signup_page() {
 		System.out.println("I am on the home page");
-		//signup = new SignUpPage(driver); 		// Old Code
 		signup = new SignUpPage(DriverUtils.driver);  // New Code
 	}
 	

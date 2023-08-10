@@ -4,7 +4,7 @@ Feature: Sign In feature
   Background: 
   	Given User is on the the home page
   	
-
+	@Smoke
   Scenario Outline: Sign in successful
     Given Initialize the elements on the SignIn page
     When User clicks on Signin link
