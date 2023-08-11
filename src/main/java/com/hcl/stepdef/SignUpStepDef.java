@@ -33,8 +33,8 @@ public class SignUpStepDef {
 	@When("User enters the new email and password on signup popup")
 	public void user_enters_the_new_email_and_password_on_signup_popup() {
 		int randomNumber = Utilities.randomNumberGenerator();
-		//signup.signUp("username"+randomNumber+"@gmail.com", "abcd123");
-		signup.signUp("username354@gmail.com", "abcd123");
+		signup.signUp("username"+randomNumber+"@gmail.com", "abcd123");
+		//signup.signUp("username354@gmail.com", "abcd123");
 	}
 	
 	@When("User clicks on Signup button on the signup popup")

@@ -27,6 +27,9 @@ public class SignInPage extends BaseClass{
 	
 	@FindBy(xpath="//button[text()='Log in']")
 	WebElement signInButton;
+	
+	@FindBy(id="logout2")
+	WebElement LogoutLink;
 
 
 	public void clickOnSignInLink() {
@@ -47,5 +50,11 @@ public class SignInPage extends BaseClass{
 	public void validateSignInSuccess() {
 		System.out.println("Sign In Succesful");
 		
+	}
+	
+	public void clickOnLogoutLink(){
+		System.out.println("Click on Logout link");
+		clickOnElement(LogoutLink);
+		System.out.println("Logout Succesful");
 	}
 }

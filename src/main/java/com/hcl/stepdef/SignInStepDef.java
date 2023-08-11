@@ -9,12 +9,10 @@ import io.cucumber.java.en.When;
 
 public class SignInStepDef {
 
-	//WebDriver driver = null;   			// Old code
 	SignInPage signIn = null;
 
 	@Given("Initialize the elements on the SignIn page")
 	public void Initialize_the_elements_on_the_SignIn_page() {
-		//signIn = new SignInPage(driver);			// Old Code
 		signIn = new SignInPage(DriverUtils.driver);			
 	}
 
@@ -37,6 +35,11 @@ public class SignInStepDef {
 	@Then("validate that Signin is successful")
 	public void validate_that_signin_is_successful() {
 		signIn.validateSignInSuccess();
+	}
+	
+	@Then("User logs out of the application")
+	public void user_logs_out_of_the_application() {
+		signIn.clickOnLogoutLink();
 	}
 	
 	@Given("Login into the application with username {string} and password {string}")

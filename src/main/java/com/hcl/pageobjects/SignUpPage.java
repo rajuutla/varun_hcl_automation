@@ -39,11 +39,13 @@ public class SignUpPage extends BaseClass {
 	WebElement closeButton;
 	
 	public void clickOnSignUpLink() {
+		
 		clickOnElement(signUpLink);
+	
 	}
 
 	public void signUp(String userEmail, String password) {
-
+	
 		clickOnElement(signUpUserName);
 		typeText(signUpUserName, userEmail);
 		clickOnElement(signUpPassword);
