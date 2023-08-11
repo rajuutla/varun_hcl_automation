@@ -48,13 +48,19 @@ public class SignInPage extends BaseClass{
 	}
 	
 	public void validateSignInSuccess() {
-		System.out.println("Sign In Succesful");
+		//if (handleAlert("getText").equals("SignIn Succesful"))
+		//	return true;
 		
 	}
 	
-	public void clickOnLogoutLink(){
-		System.out.println("Click on Logout link");
+	public void validateSignInFail() {
+		if (handleAlert("getText").equals(""));
+			
+		
+	}
+	
+	public void clickOnLogoutLink() throws InterruptedException{
+		Thread.sleep(1000);
 		clickOnElement(LogoutLink);
-		System.out.println("Logout Succesful");
 	}
 }
