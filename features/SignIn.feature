@@ -10,9 +10,9 @@ Feature: Sign In feature
     When User clicks on Signin link
     And User enters the email "<username>" and password "<password>" on signin popup
     And User clicks on Signin button on the signin popup
-    Then validate that Signin status
-    And User logs out of the application
     Then validate that Signin is successful
+    And User logs out of the application
+  
     
    Examples: 
   	| username 							| password  |
@@ -23,7 +23,7 @@ Feature: Sign In feature
     When User clicks on Signin link
     And User enters the email "<username>" and password "<password>" on signin popup
     And User clicks on Signin button on the signin popup
-    Then validates Signin status
+    Then validate that Signin is unsuccessful
     And User logs out of the application
     
    Examples: 

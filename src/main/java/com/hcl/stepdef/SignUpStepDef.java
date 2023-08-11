@@ -42,8 +42,8 @@ public class SignUpStepDef {
 		signup.clickOnSignUpButton();
 	}
 	
-	@Then("validates that signup is successful")
-	public void validates_that_signup_is_successful() {
+	@Then("validate that signup is successful")
+	public void validate_that_signup_is_successful() {
 		Assert.assertTrue(signup.validateSignupSuccess());
 	}
 	
