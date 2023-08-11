@@ -9,9 +9,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 public class DriverUtils {
 	
 	public static WebDriver driver = null;
-
-	// public static WebDriver getDriver() //  old Code 
-	public static void getDriver() {		// New Code
+ 
+	public static void getDriver() {
 		
 		String browserType = System.getProperty("browser");
 		
@@ -23,8 +22,6 @@ public class DriverUtils {
 		driver.get("https://www.demoblaze.com/index.html");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		
-		//return driver;  // Old Code
 	}
 
 }

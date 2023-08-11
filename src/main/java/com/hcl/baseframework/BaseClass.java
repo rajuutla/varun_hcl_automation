@@ -26,14 +26,12 @@ public class BaseClass {
 	}
 
 	public void waitForAlertPresence() {
-		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));  // Old Code
-		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(10));  // New Code
+		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(10)); 
 		wait.until(ExpectedConditions.alertIsPresent());
 	}
 	
 	public String handleAlert(String alertType) {
 		waitForAlertPresence();
-		// Alert alert = driver.switchTo().alert();  // old Code
 		Alert alert = DriverUtils.driver.switchTo().alert();  // New Code
 		if (alertType.equals("getText")) {
 			String alertMessage = alert.getText();
