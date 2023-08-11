@@ -12,6 +12,7 @@ Feature: Sign In feature
     And User clicks on Signin button on the signin popup
     Then validate that Signin is successful
     And User logs out of the application
+    And User logs out of the application
     
    Examples: 
   	| username 							| password  |
