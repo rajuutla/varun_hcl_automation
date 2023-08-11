@@ -32,13 +32,18 @@ public class SignInStepDef {
 
 	}
 
-	@Then("validate that Signin is successful")
-	public void validate_that_signin_is_successful() {
+	@Then("validates Signin status")
+	public void validates_signin_successful() {
 		signIn.validateSignInSuccess();
 	}
 	
+	@Then("validates Signin status")
+	public void validates_signin_unsuccessful() {
+		signIn.validateSignInFail();
+	}
+	
 	@Then("User logs out of the application")
-	public void user_logs_out_of_the_application() {
+	public void user_logs_out_of_the_application() throws InterruptedException {
 		signIn.clickOnLogoutLink();
 	}
 	
