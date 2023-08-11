@@ -10,4 +10,4 @@ Feature: Sign up feature
     When User clicks on Signup link
     And User enters the new email and password on signup popup
     And User clicks on Signup button on the signup popup
-    Then validates that signup is successful
+    Then validate that signup is successful

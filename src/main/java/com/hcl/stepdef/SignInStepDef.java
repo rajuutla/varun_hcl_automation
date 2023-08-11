@@ -32,13 +32,13 @@ public class SignInStepDef {
 
 	}
 
-	@Then("validates Signin status")
-	public void validates_signin_successful() {
+	@Then("validate that Signin is successful")
+	public void validate_signin_is_successful() {
 		signIn.validateSignInSuccess();
 	}
 	
-	@Then("validates Signin status")
-	public void validates_signin_unsuccessful() {
+	@Then("validate that Signin is unsuccessful")
+	public void validate_signin_is_unsuccessful() {
 		signIn.validateSignInFail();
 	}
 	
