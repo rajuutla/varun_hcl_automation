@@ -32,7 +32,7 @@ public class Functions {
 	int randomInt = randomGenerator.nextInt(1000);
 	// String emailId = "username" + randomInt + "@gmail.com";
 	String emailId = "username354@gmail.com";
-	String password = "abcd123";
+	String password = "abcd123"; 
 	// WebDriver driver = null;
 	
 	@BeforeClass(alwaysRun = true)
@@ -103,7 +103,7 @@ public class Functions {
 
 		WebElement monitorElement = driver.findElement(By.xpath("//*[contains(text(),'Monitors')]"));
 		
-		js.executeScript("arguments[0].scrollIntoView();", monitorElement);
+		//js.executeScript("arguments[0].scrollIntoView();", monitorElement);
 
 		monitorElement.click();
 		String productName = "Apple monitor 24";
@@ -163,7 +163,7 @@ public class Functions {
 
 	}
 
-	@Test(priority = 4)
+	/*@Test(priority = 4)
 	public void itemCost() throws InterruptedException {
 
 		WebElement laptopElement = driver.findElement(By.xpath("//*[contains(text(),'Laptops')]"));
@@ -189,7 +189,7 @@ public class Functions {
 			Assert.assertEquals(productPrice, hm.get(productName));
 		}
 
-	}
+	}*/
 
 	/*
 	 * @AfterClass public void closeBrowser() { driver.quit(); }

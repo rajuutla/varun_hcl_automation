@@ -1,21 +1,33 @@
-Feature: Add products to cart feature
-  User is able to add multiple products to cart
+Feature: Add product to cart feature
+  User is able to add product to cart
   
   Background: 
   	Given User is on the the home page
+  	#And Login into the application with username "username354@gmail.com" and password "abcd123"
+  
   	
-
-  # I should have already registered user.
-  Scenario Outline: Add products to cart
-    Given Login into the application with username "" and password ""
-    And Sign in is successful
-    When User searches for a product "productName"
-    And User adds multiple products "productQty" to cart
+  @Smoke
+  Scenario Outline: Add multiple quantities of a product to cart
+    When User clicks on product type link "Laptops" 
+    And User searches for a product "<productName>"
+    And User adds multiple quantities <productQty> of above product to cart
     And User navigates to cart
     Then validate that selected products are added to cart
     
-   Examples: 
-  	| productName | productQty  |
-   	| Sony vaio i5 | 2 |
-   	| MacBook Pro | 1 |
-   	
+  Examples: 
+		| productName 	| productQty  |
+  	| Sony vaio i5 	| 2 					|
+  	#| MacBook Pro 	| 1 					|
+ 	
+
+  @Smoke
+  Scenario Outline: Add multiple products to cart
+    When User clicks on product type link "Laptops" 
+    And User searches for a product "Sony vaio i5"
+    And User adds multiple quantities 2 of above product to cart
+    And User navigates to Home page
+    And User clicks on product type link "Laptops"
+    And User searches for a product "MacBook Pro"
+    And User adds multiple quantities 2 of above product to cart
+    And User navigates to cart
+    Then validate that selected products are added to cart

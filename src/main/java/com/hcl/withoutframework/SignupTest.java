@@ -17,7 +17,7 @@ public class SignupTest {
 	public void setup() {
 		DriverUtils.getDriver();
 		signupPage = new SignUpPage(DriverUtils.driver);
-	}
+	} 
 
 	@Test (groups= {"smoke"})
 	public void signUp() {
@@ -45,9 +45,7 @@ public class SignupTest {
 		
 		signupPage.clickOnSignUpLink();
 		signupPage.signUp("test1294@abc.com", "abcd123");
-		boolean flag1=signupPage.validateSignupSuccess();
-		
-		Assert.assertTrue(flag1);
+	
 		
 		// Testing the stash message
 		

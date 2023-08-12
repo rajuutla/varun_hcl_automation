@@ -11,7 +11,6 @@ public class StaticConcept {
 		city= "Chandigarh";
 		country = "India";
 	}
-	
 	public StaticConcept(String name, String address, String city) {
 		this.name = name;
 		this.address = address;

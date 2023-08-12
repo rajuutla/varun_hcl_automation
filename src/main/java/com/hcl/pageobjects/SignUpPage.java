@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+import org.testng.Assert;
 import com.hcl.baseframework.BaseClass;
 
 public class SignUpPage extends BaseClass {
@@ -44,10 +44,10 @@ public class SignUpPage extends BaseClass {
 	
 	}
 
-	public void signUp(String userEmail, String password) {
+	public void signUp(String username, String password) {
 	
 		clickOnElement(signUpUserName);
-		typeText(signUpUserName, userEmail);
+		typeText(signUpUserName, username);
 		clickOnElement(signUpPassword);
 		typeText(signUpPassword, password);
 
@@ -57,23 +57,18 @@ public class SignUpPage extends BaseClass {
 		clickOnElement(signUpButton);
 	}
 
-	public boolean validateSignupSuccess() {
-
-		String actualMessage = handleAlert("getText"); // getAlertText();
-		String expectedMessage = "Sign up successful.";
+	public void validateSignupSuccess() {
 
 		// return actualMessage.equals(expectedMessage)? true : false;
-		if (actualMessage.equals(expectedMessage)) {
-			System.out.println("Sign In Successful");
-			handleAlert("accept");
-			return true;
-
-		} else {
-			System.out.println(handleAlert("getText"));
-			handleAlert("accept");
-			clickOnElement(closeButton);
-			return false;
-		}
+		Assert.assertTrue((handleAlert("getText").equals("Sign up successful.")));
+		handleAlert("accept");
+	}
+	
+	public void validateSignupFail() {
+		//System.out.println(handleAlert("getText"));
+		Assert.assertTrue((handleAlert("getText").equals("This user already exist.")));
+		handleAlert("accept");
+		clickOnElement(closeButton);
 	}
 
 }
