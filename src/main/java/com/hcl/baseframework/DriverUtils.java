@@ -25,9 +25,9 @@ public class DriverUtils {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 	}
 	
-	@After
+	/*@After
 	public static void  tearDown() {
 		if (driver!=null)
 		driver.quit();
-	}
+	}*/
 }

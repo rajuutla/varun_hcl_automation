@@ -4,13 +4,14 @@ import java.time.Duration;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseClass {
 
+	JavascriptExecutor js = (JavascriptExecutor) DriverUtils.driver;
+	
 	//WebDriver driver = null;   						// Old Code
 
 	/*public BaseClass(WebDriver driver) {
@@ -33,9 +34,13 @@ public class BaseClass {
 	public String handleAlert(String alertType) {
 		waitForAlertPresence();
 		Alert alert = DriverUtils.driver.switchTo().alert();  // New Code
+		switch(alertType) {
+		case "getText":
+			return alert.getText();
+		}
+		
 		if (alertType.equals("getText")) {
-			String alertMessage = alert.getText();
-			return alertMessage;
+			return alert.getText();
 		} 
 		
 		else if (alertType.equals("dismiss")) {
@@ -50,10 +55,13 @@ public class BaseClass {
 		return "";
 	}
 	
-	@SuppressWarnings("null")
 	public void scrollPage(WebElement element) {
-		JavascriptExecutor js = null;
 		js.executeScript("arguments[0].scrollIntoView();", element);
+	}
+	
+	public void waitForElementVisibility(WebElement element) {
+		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
 }

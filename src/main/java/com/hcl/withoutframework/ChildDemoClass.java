@@ -8,7 +8,6 @@ public class ChildDemoClass extends ParentDemoClass {
 
 	String name = "Class - Variable ** Child Class **";
 	int a = 2;
-
 	
 	public ChildDemoClass() {
 		super("Varun");

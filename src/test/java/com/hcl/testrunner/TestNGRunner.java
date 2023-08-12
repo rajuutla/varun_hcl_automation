@@ -3,7 +3,7 @@ package com.hcl.testrunner;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
     
-@CucumberOptions(tags = "@Smoke", 
+@CucumberOptions(tags = "@Smoke or @Negative", 
 				 features = {"features"}, 
 				 glue = {"com.hcl.stepdef"},
 				 plugin = { "pretty", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" },

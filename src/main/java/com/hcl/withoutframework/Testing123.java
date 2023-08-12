@@ -8,8 +8,8 @@ public class Testing123 {
 		String str = "Backup session 23/45 6 started";
 		
 		String sub = str.substring(str.indexOf(" 23"), str.indexOf(" started"));
-		
+		String name = "Varun";
 		System.out.println(sub);
+		System.out.println(" "+name+" ");
 	}
-
 }
