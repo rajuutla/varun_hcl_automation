@@ -19,9 +19,9 @@ public class SignInPage extends BaseClass{
 
 	WebDriver driver = null;
 	
-	public SignInPage(WebDriver driver) {
-		// super(driver);							// Old Code
-		PageFactory.initElements(driver,this);	
+	public SignInPage() {
+		// super(driver);			// Old Code
+		PageFactory.initElements(DriverUtils.driver, this);	
 	}
 	
 	@FindBy(id="login2")
@@ -50,7 +50,7 @@ public class SignInPage extends BaseClass{
 		clickOnElement(signInLink);
 	}
 	
-	public void enterUsernamePassword(String username, String password) {
+	public void enterUsernamePasswordSignIn(String username, String password) {
 		clickOnElement(signInUsername);
 		typeText(signInUsername,username);
 		clickOnElement(signInPassword);

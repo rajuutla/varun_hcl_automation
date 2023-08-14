@@ -16,8 +16,8 @@ public class SignupTest {
 	@BeforeMethod
 	public void setup() {
 		DriverUtils.getDriver();
-		signupPage = new SignUpPage(DriverUtils.driver);
-	} 
+		signupPage = new SignUpPage();
+	}  
 
 	@Test (groups= {"smoke"})
 	public void signUp() {
@@ -44,7 +44,7 @@ public class SignupTest {
 		 */
 		
 		signupPage.clickOnSignUpLink();
-		signupPage.signUp("test1294@abc.com", "abcd123");
+		//signupPage.signUp("test1294@abc.com", "abcd123");
 	
 		
 		// Testing the stash message

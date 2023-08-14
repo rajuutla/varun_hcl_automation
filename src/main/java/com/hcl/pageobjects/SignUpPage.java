@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import com.hcl.baseframework.BaseClass;
+import com.hcl.baseframework.DriverUtils;
 
 public class SignUpPage extends BaseClass {
 
@@ -18,9 +19,9 @@ public class SignUpPage extends BaseClass {
 
 	Alert alert = null;
 
-	public SignUpPage(WebDriver driver) {
+	public SignUpPage() {
 		//super(driver); 							// Old code
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(DriverUtils.driver, this);
 	}
 
 	@FindBy(id = "signin2")
@@ -41,16 +42,14 @@ public class SignUpPage extends BaseClass {
 	public void clickOnSignUpLink() {
 		
 		clickOnElement(signUpLink);
-	
 	}
 
-	public void signUp(String username, String password) {
+	public void enterUsernamePasswordSignUp(String username, String password) {
 	
 		clickOnElement(signUpUserName);
 		typeText(signUpUserName, username);
 		clickOnElement(signUpPassword);
 		typeText(signUpPassword, password);
-
 	}
 
 	public void clickOnSignUpButton() {
