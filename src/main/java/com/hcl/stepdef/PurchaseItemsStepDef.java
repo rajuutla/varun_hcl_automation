@@ -1,16 +1,23 @@
 package com.hcl.stepdef;
 
 import com.hcl.pageobjects.PurchaseItemsPage;
+import com.hcl.pageobjects.SignInPage;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class PurchaseItemsStepDef {
 
-	PurchaseItemsPage purchaseItems = new PurchaseItemsPage();
+	PurchaseItemsPage purchaseItems = null;
 	
-	@When ("User clicks on product type link {string}")
+	@Given("Initialize the elements on the PurchaseItems page")
+	public void initialize_the_elements_on_the_PurchaseItems_page() {
+		purchaseItems = new PurchaseItemsPage();			
+	}
+	
+	@When ("User clicks on product type link {string}") 
 	public void user_clicks_on_product_type_link(String productType) {
 		purchaseItems.clickOnProductTypeLink(productType);
 	}
@@ -44,6 +51,4 @@ public class PurchaseItemsStepDef {
 	public void user_navigates_to_home_page() {
 		purchaseItems.clickOnHomeLink();	
 	}
-	
-	
 }

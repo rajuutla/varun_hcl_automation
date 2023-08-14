@@ -1,69 +1,60 @@
 package com.hcl.stepdef;
 
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-
-import com.aventstack.extentreports.gherkin.model.Scenario;
-import com.hcl.baseframework.DriverUtils;
 import com.hcl.baseframework.Utilities;
 import com.hcl.pageobjects.SignUpPage;
-
-import io.cucumber.java.AfterStep;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class SignUpStepDef {
 	
-	SignUpPage signup = null;
-	
-	@Given("User is on the the home page")
-	public void Initialize_the_browser() {
-		DriverUtils.getDriver();
-	}
+	SignUpPage signUp = null;
 	
 	@Given("Initialize the elements on the SignUp page")
-	public void Initialize_the_elements_on_the_signup_page() {
-		//System.out.println("I am on the home page");
-		signup = new SignUpPage(DriverUtils.driver);  // New Code
+	public void initialize_the_elements_on_the_signup_page() {
+		signUp = new SignUpPage();  // New Code
 	}
 	
 	@When("User clicks on Signup link")
 	public void user_clicks_on_signup_link() {
-		signup.clickOnSignUpLink();
+		signUp.clickOnSignUpLink();
 	}
 	
 	@When("User enters the new email and password on signup popup")
 	public void user_enters_the_new_email_and_password_on_signup_popup() {
 		int randomNumber = Utilities.randomNumberGenerator();
-		signup.signUp("username"+randomNumber+"@gmail.com", "abcd123");
+		signUp.enterUsernamePasswordSignUp("username"+randomNumber+"@gmail.com", "abcd123");
 	}
 	
 	@When("User clicks on Signup button on the signup popup")
 	public void user_clicks_on_signup_button_on_the_signup_popup() {
-		signup.clickOnSignUpButton();
+		signUp.clickOnSignUpButton();
 	}
 	
 	@Then("validate that signup is successful")
 	public void validate_that_signup_is_successful() {
-		signup.validateSignupSuccess();
+		signUp.validateSignupSuccess();
 	}
 	
 	@When("User enters the existing email {string} and existing password {string} on signup popup")
 	public void user_enters_the_existing_email_and_existing_password_on_signup_popup(String username, String password) {
-		signup.signUp(username, password);
+		signUp.enterUsernamePasswordSignUp(username, password);
 	}
 
 	@Then("validate that signup is unsuccessful")
 	public void validate_that_signup_is_unsuccessful() {
-		signup.validateSignupFail();
+		signUp.validateSignupFail();
 	}
 
 	/*@AfterStep
 	public void addScreenShot(Scenario sc) {
-		final byte[] screen = ((TakesScreenshot) DriverUtils.driver).getScreenshotAs(OutputType.BYTES);
+		final byte[] screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 		sc.attach(screen, "image/png", sc.getName());
 		
 	}*/
+	
+	
+	
+
 
 }

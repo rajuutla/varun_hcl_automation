@@ -119,10 +119,9 @@ public class PurchaseItemsPage extends BaseClass{
 	public void addToCartButton(Integer addQty) {
 		waitForElementVisibility(addToCartButton);
 		for (int i = 0; i < addQty; i++) {
-			System.out.println("Value of i: "+i);
 			clickOnElement(addToCartButton);
 			handleAlert("getText");
-			Assert.assertEquals(handleAlert("getText"), "Product added");
+			Assert.assertEquals(handleAlert("getText"), "Product added.");
 			handleAlert("accept");
 		}
 	}

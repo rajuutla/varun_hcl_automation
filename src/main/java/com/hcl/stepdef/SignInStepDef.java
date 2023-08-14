@@ -1,6 +1,5 @@
 package com.hcl.stepdef;
 
-import com.hcl.baseframework.DriverUtils;
 import com.hcl.pageobjects.SignInPage;
 
 import io.cucumber.java.en.Given;
@@ -10,20 +9,20 @@ import io.cucumber.java.en.When;
 public class SignInStepDef {
 
 	SignInPage signIn = null;
-
+	
 	@Given("Initialize the elements on the SignIn page")
-	public void Initialize_the_elements_on_the_SignIn_page() {
-		signIn = new SignInPage(DriverUtils.driver);			
-	} 
+	public void initialize_the_elements_on_the_SignIn_page() {
+		signIn = new SignInPage();			
+	}
 
 	@When("User clicks on Signin link")
-	public void user_clicks_on_signin_link() {
+	public void user_clicks_on_signin_link() { 
 		signIn.clickOnSignInLink();
 	}
 
 	@When("User enters the username {string} and password {string} on signin popup")
 	public void user_enters_the_username_and_password_on_signin_popup(String username, String password) {
-		signIn.enterUsernamePassword(username, password);
+		signIn.enterUsernamePasswordSignIn(username, password);
 	}
 
 	@When("User clicks on Signin button on the signin popup")
@@ -56,9 +55,9 @@ public class SignInStepDef {
 		signIn.clickOnLogoutLink();
 	}
 	
-	@Given("Login into the application with username {string} and password {string}")
-	public void login_into_app(String username, String password) throws InterruptedException {
-		Initialize_the_elements_on_the_SignIn_page();
+	@Given("User has Login into the application with username {string} and password {string}")
+	public void login_into_application(String username, String password) throws InterruptedException {
+		initialize_the_elements_on_the_SignIn_page();
 		user_clicks_on_signin_link();
 		user_enters_the_username_and_password_on_signin_popup(username, password);
 		user_clicks_on_signin_button_on_the_signin_popup();
@@ -71,5 +70,5 @@ public class SignInStepDef {
 		sc.attach(screen, "image/png", sc.getName());
 		
 	}*/
-
+	
 }

@@ -5,12 +5,15 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 
 public class DriverUtils {
 	
 	public static WebDriver driver = null;
  
+	//@Before
 	public static void getDriver() {
 		
 		String browserType = System.getProperty("browser");
@@ -18,16 +21,16 @@ public class DriverUtils {
 		if (browserType.equals("chrome"))
 			driver = new ChromeDriver();
 		else
-			driver = new EdgeDriver();
+			driver = new EdgeDriver(); 
 		
 		driver.get("https://www.demoblaze.com/index.html");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 	}
 	
-	/*@After
+	//@After
 	public static void  tearDown() {
 		if (driver!=null)
 		driver.quit();
-	}*/
+	}
 }
