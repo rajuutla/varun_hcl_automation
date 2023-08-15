@@ -14,7 +14,7 @@ Feature: Sign up feature
   @Negative
   Scenario Outline: Signup with existing user
     When User clicks on Signup link
-    And User enters the existing email "<username>" and existing password "<password>" on signup popup
+    But User enters the existing email "<username>" and existing password "<password>" on signup popup
     And User clicks on Signup button on the signup popup
     Then validate that signup is unsuccessful
 

@@ -16,7 +16,9 @@ public class Collections {
 		hm.put(2, "Good Evening");
 		System.out.println(hm);
 		// System.out.println(hm.get(2));
-		Set sn = hm.entrySet();
+		
+		
+		/*Set sn = hm.entrySet();
 		Iterator it = sn.iterator();
 
 		while (it.hasNext()) {
@@ -24,7 +26,23 @@ public class Collections {
 			Map.Entry mp = (Map.Entry) it.next();
 			System.out.println(mp.getKey());
 			System.out.println(mp.getValue());
+		}*/
+		
+		Iterator <Integer> it = hm.keySet().iterator();       //keyset is a method  
+		/*while(it.hasNext())  
+		{  
+			//System.out.println(it.next().getClass());
+			int key=it.next();  
+			System.out.println(key+" "+hm.get(key));  
+		}*/
+		int count =0;
+		for(Map.Entry mapEntry : hm.entrySet()){    
+			count = count+(int)mapEntry.getKey();
+			System.out.println(mapEntry.getKey()+" "+mapEntry.getValue());
+			System.out.println(mapEntry.getKey().getClass()+" "+mapEntry.getValue().getClass());
 		}
+		
+		
 
 	}
 

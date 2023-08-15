@@ -2,15 +2,15 @@ Feature: Sign In feature
   I want to be able to Sign in the application
 
   Background: 
-  Given Initialize the elements on the SignIn page
-  
+    Given Initialize the elements on the SignIn page
+
   @Smoke
   Scenario Outline: Sign in successful
     When User clicks on Signin link
     And User enters the username "<username>" and password "<password>" on signin popup
     And User clicks on Signin button on the signin popup
     Then validate that Signin is successful
-    And User logs out of the application
+    And User clicks on Logout button
 
     Examples: 
       | username              | password |
@@ -19,7 +19,7 @@ Feature: Sign In feature
   @Negative
   Scenario Outline: Sign in with invalid password
     When User clicks on Signin link
-    And User enters the username "<username>" and password "<password>" on signin popup
+    But User enters the username "<username>" and password "<password>" on signin popup
     And User clicks on Signin button on the signin popup
     Then validate that Signin is unsuccessful for invalid password
 
@@ -30,7 +30,7 @@ Feature: Sign In feature
   @Negative
   Scenario Outline: Sign in with unregistered user
     When User clicks on Signin link
-    And User enters the username "<username>" and password "<password>" on signin popup
+    But User enters the username "<username>" and password "<password>" on signin popup
     And User clicks on Signin button on the signin popup
     Then validate that Signin is unsuccesful for unregistered user
 
@@ -41,7 +41,7 @@ Feature: Sign In feature
   @Negative
   Scenario Outline: Sign in without password
     When User clicks on Signin link
-    And User enters the username "<username>" and password "<password>" on signin popup
+    But User enters the username "<username>" and password "<password>" on signin popup
     And User clicks on Signin button on the signin popup
     Then validate that missing username or password error
 
