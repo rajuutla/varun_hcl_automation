@@ -1,5 +1,7 @@
 package com.hcl.withoutframework;
 
+import org.testng.Assert;
+
 public class StringCompare {
 
 	public void compare() {
@@ -9,6 +11,8 @@ public class StringCompare {
 			System.out.println("Strings displayed in sorted order: \n"+str2+"\n"+str1);
 		else
 			System.out.println("Strings displayed in sorted order: \n"+str1+"\n"+str2);
+	
+		Assert.assertEquals(str1, str2);
 	}
 	
 	public static void main(String[] args) {

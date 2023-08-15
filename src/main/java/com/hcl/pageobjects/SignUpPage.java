@@ -28,28 +28,25 @@ public class SignUpPage extends BaseClass {
 	WebElement signUpLink;
 
 	@FindBy(id = "sign-username")
-	WebElement signUpUserName;
+	WebElement signUpUserNameTextField;
 
 	@FindBy(id = "sign-password")
-	WebElement signUpPassword;
+	WebElement signUpPasswordTextField;
 
 	@FindBy(xpath = "//button[text()='Sign up']")
 	WebElement signUpButton;
 
 	@FindBy(xpath = "//button[text()='Sign up']/preceding-sibling::button")
 	WebElement closeButton;
-	
+
 	public void clickOnSignUpLink() {
-		
+
 		clickOnElement(signUpLink);
 	}
 
 	public void enterUsernamePasswordSignUp(String username, String password) {
-	
-		clickOnElement(signUpUserName);
-		typeText(signUpUserName, username);
-		clickOnElement(signUpPassword);
-		typeText(signUpPassword, password);
+		typeText(signUpUserNameTextField, username);
+		typeText(signUpPasswordTextField, password);
 	}
 
 	public void clickOnSignUpButton() {
@@ -62,7 +59,7 @@ public class SignUpPage extends BaseClass {
 		Assert.assertTrue((handleAlert("getText").equals("Sign up successful.")));
 		handleAlert("accept");
 	}
-	
+
 	public void validateSignupFail() {
 		//System.out.println(handleAlert("getText"));
 		Assert.assertTrue((handleAlert("getText").equals("This user already exist.")));
