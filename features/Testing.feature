@@ -5,7 +5,7 @@ Feature: Add product(s) to cart feature
     Given Initialize the elements on the PurchaseItems page
     And User has Login into the application with username "username354@gmail.com" and password "abcd123"
 
-  @Smoke
+  @Run
  	Scenario Outline: Validate items in cart and Cart Value
     When User adds the following product "<productName>" and quantity "<productQty>" under category "<productType>" to cart
     And User navigates to cart
