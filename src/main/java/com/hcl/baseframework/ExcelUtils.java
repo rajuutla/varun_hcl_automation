@@ -40,7 +40,8 @@ public class ExcelUtils {
 
 		try {
 			String CellData = ExcelWSheet.getRow(RowNum).getCell(ColNum).getStringCellValue();
-			System.out.println("The value of CellData " + CellData);
+			//System.out.println("The value of CellData " + CellData);
+			System.out.println(" " + CellData);
 			return CellData;
 		} catch (Exception e) {
 			return "Errors in Getting Cell Data";
