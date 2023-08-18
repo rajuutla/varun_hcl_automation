@@ -188,7 +188,7 @@ public class PurchaseItemsPage extends BaseClass{
 	}
 
 	public void fetchOrderID() {
-		waitForElementVisibility(thankYouPurchaseText);
+		waitForElementToBeVisible(thankYouPurchaseText);
 		String orderId = orderIDText.getText();
 		String [] stringPart;
 		stringPart = Utilities.splitStringExtractText(orderId,"\n");
@@ -217,25 +217,18 @@ public class PurchaseItemsPage extends BaseClass{
 			String[] quantity = Utilities.splitStringExtractText(quantities[i], ":");
 			if(product.length>1) {
 				for(int j=0;j<product.length;j++) {
-					//System.out.print(productTypes[i].trim()+"  ");  // Laptops
 					clickOnProductTypeLink(productTypes[i]);
-					//System.out.print(product[j].trim()+"   ");		// Sony
 					clickOnProductNameLink(product[j].trim());
-					//System.out.println(quantity[j].trim()+"   ");	// 2
 					addToCartButton(Integer.parseInt(quantity[j].trim()));
 					productsInCart.put(product[j].trim(), Integer.parseInt(quantity[j].trim()));
 					clickOnHomeLink();
 				}
 			}
 			else {
-				//System.out.print(productTypes[i].trim()+"  ");  // Laptops
 				clickOnProductTypeLink(productTypes[i].trim());
-				//System.out.print(product[0].trim()+"   ");		// Sony
 				clickOnProductNameLink(product[0].trim());
-				//System.out.println("1");	// 2
 				addToCartButton(Integer.parseInt(quantity[0].trim()));
 				productsInCart.put(product[0].trim(), Integer.parseInt(quantity[0].trim()));
-				//System.out.println("Single Product");
 				clickOnHomeLink();
 			}
 		}
@@ -244,7 +237,7 @@ public class PurchaseItemsPage extends BaseClass{
 
 
 	public void validateTotalCartValue() {
-		waitForElementVisibility(totalCartValue);
+		waitForElementToBeVisible(totalCartValue);
 		Assert.assertFalse(totalCartValue.getText().isBlank());
 	}
 
@@ -275,12 +268,14 @@ public class PurchaseItemsPage extends BaseClass{
 	}
 
 	public void flushCartItems() throws InterruptedException {
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
+		waitForElementToBeVisible(totalCartValue);
 		if(!totalCartValue.getText().isBlank()) {
 			int itemCount = deleteCartItemCount.size();
+			System.out.println("No. of products to be Deleted: "+itemCount);
 			for(int i=itemCount;i>0;i--) {
-				Thread.sleep(1000);
-				waitForElementToBeClickable(deleteCartItemLink);
+				Thread.sleep(1500);
+				System.out.println("***Product Deleted");
 				clickOnElement(deleteCartItemLink);
 			}
 		}

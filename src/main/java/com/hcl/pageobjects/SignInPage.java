@@ -63,7 +63,7 @@ public class SignInPage extends BaseClass{
 	}
 
 	public void validateSignInSuccess() {
-		waitForElementVisibility(welcomeUserText);
+		waitForElementToBeVisible(welcomeUserText);
 		Assert.assertTrue(welcomeUserText.getText().startsWith("Welcome"));
 	}
 
