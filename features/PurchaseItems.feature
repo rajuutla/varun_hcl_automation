@@ -19,7 +19,7 @@ Feature: Add product(s) to cart feature
       | Laptops     | Sony vaio i5 |          2 |
 
   @Smoke
- Scenario Outline: Validate items in cart and Cart Value
+ 	Scenario Outline: Validate items in cart and Cart Value
     Given User clears the cart
     When User adds the following product "<productName>" and quantity "<productQty>" under category "<productType>" to cart
     And User navigates to cart
