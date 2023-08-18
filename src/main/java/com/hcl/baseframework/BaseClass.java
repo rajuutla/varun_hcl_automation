@@ -20,12 +20,12 @@ public class BaseClass {
 	}*/ 												// Old Code
 
 	public void clickOnElement(WebElement element) {
-		waitForElementClickable(element);
+		waitForElementToBeVisible(element);
 		element.click();
 	}
 
 	public void typeText(WebElement element, String value) {
-		waitForElementClickable(element);
+		waitForElementToBeClickable(element);
 		element.sendKeys(value);
 	}
 
@@ -65,19 +65,15 @@ public class BaseClass {
 	public void jsClickElement(WebElement element) {
 		js.executeScript("arguments[0].click();", element);
 	}
+
 	
-	public void waitForElementClickable(WebElement element) {
-		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(element));
-	}
-	
-	public void waitForElementVisibility(WebElement element) {
-		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(10));
+	public void waitForElementToBeVisible(WebElement element) {
+		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
 	public void waitForElementToBeClickable(WebElement element) {
-		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 	

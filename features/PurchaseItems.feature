@@ -20,7 +20,7 @@ Feature: Add product(s) to cart feature
 
   @Smoke
  	Scenario Outline: Validate items in cart and Cart Value
-    Given User clears the cart
+    #Given User clears the cart
     When User adds the following product "<productName>" and quantity "<productQty>" under category "<productType>" to cart
     And User navigates to cart
     Then validate that selected products are added to cart
