@@ -8,10 +8,10 @@ public class ChildDemoClass extends ParentDemoClass {
 
 	String name = "Class - Variable ** Child Class **";
 	int a = 2;
-	static ParentDemoClass pdd = new ParentDemoClass();
+	//ParentDemoClass pdd = new ParentDemoClass();
 	
 	public ChildDemoClass() {
-		//super("Varun");
+		super("Varun");
 		System.out.println(super.name + " ** called in constructor **");
 		System.out.println("Child Class Constructor");
 	}
@@ -44,8 +44,8 @@ public class ChildDemoClass extends ParentDemoClass {
 		// TODO Auto-generated method stub
 
 		//ChildDemoClass cd = null;
-		
-		//ChildDemoClass cd = new ChildDemoClass();
+		System.out.println("Im in Main");
+		ChildDemoClass cd = new ChildDemoClass();
 		//cd.getData();
 		
 		//cd.getThisData();
@@ -53,7 +53,7 @@ public class ChildDemoClass extends ParentDemoClass {
 		// ParentDemoClass pdc = new ChildDemoClass(); //pdc.getData();
 
 		//ParentDemoClass pdd = new ParentDemoClass();
-		pdd.getData();
+		//pdd.getData();
 	}
 
 }

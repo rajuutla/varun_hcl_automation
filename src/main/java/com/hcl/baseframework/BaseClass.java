@@ -3,6 +3,7 @@ package com.hcl.baseframework;
 import java.time.Duration;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -61,6 +62,10 @@ public class BaseClass {
 		js.executeScript("arguments[0].scrollIntoView();", element);
 	}
 
+	public void jsClickElement(WebElement element) {
+		js.executeScript("arguments[0].click();", element);
+	}
+	
 	public void waitForElementClickable(WebElement element) {
 		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -74,6 +79,10 @@ public class BaseClass {
 	public void waitForElementToBeClickable(WebElement element) {
 		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
+	}
+	
+	public WebElement getDriverElement(String locator1, String locator2) {
+		return DriverUtils.driver.findElement(By.xpath(locator1+locator2));
 	}
 	
 }

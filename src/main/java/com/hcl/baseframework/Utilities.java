@@ -12,11 +12,8 @@ public class Utilities {
 		return randomInt;
 	}
 
-	public static String splitStringExtractText(String text, String pattern) {
-
+	public static String[] splitStringExtractText(String text, String pattern) {
 		String[] stringParts = text.split(Pattern.quote(pattern));
-		String partA = stringParts[0];
-		//System.out.println("Order " + partA);
-		return "Order "+ partA;
+		return stringParts;
 	}
 }
