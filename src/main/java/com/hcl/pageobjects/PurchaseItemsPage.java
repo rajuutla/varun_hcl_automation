@@ -54,16 +54,16 @@ public class PurchaseItemsPage extends BaseClass{
 
 	@FindBy(xpath=("//tr[@class='success']"))
 	List<WebElement> itemsInCart;
-	
+
 	@FindBy(linkText="Delete")
 	List<WebElement> deleteCartItemCount;
-	
+
 	@FindBy(linkText="Delete")
 	WebElement deleteCartItemLink;
-	
+
 	@FindBy(id="totalp")
 	WebElement totalCartValue;
-	
+
 	@FindBy(xpath="//*[contains(text(),'Cart')]")
 	WebElement cartLink;
 
@@ -93,7 +93,7 @@ public class PurchaseItemsPage extends BaseClass{
 
 	@FindBy(xpath="//*[contains(text(),'Purchase')]/preceding-sibling::button")
 	WebElement placeOrderCloseButton;
-	
+
 	@FindBy(xpath="//button[(text()='Purchase')]")
 	WebElement placeOrderPurchaseButton;
 
@@ -105,7 +105,10 @@ public class PurchaseItemsPage extends BaseClass{
 
 	@FindBy(xpath="//button[(text()='OK')]")
 	WebElement purchaseOrderOKButton;
-	
+
+	@FindBy(id="logout2")
+	WebElement logoutLink;
+
 	public void clickOnProductTypeLink(String productLink) {
 		switch(productLink) {
 		case "Phones": 
@@ -126,14 +129,7 @@ public class PurchaseItemsPage extends BaseClass{
 	}
 
 	public void clickOnProductNameLink(String productName) {
-		//System.out.println("Product name passed: "+productName);
-		//DriverUtils.driver.findElement(By.xpath("//*[contains(text(),'Monitors')]"));
-		//System.out.println("*** "+productNamesLink1);
 		clickOnElement(DriverUtils.driver.findElement(By.partialLinkText(productName)));
-		//waitForElementVisibility(productNamesLink.get(0).getText().equals(productName));
-		//for(int i=0;i<productNamesLink.size();i++) {
-		//	System.out.println("Print Product name: "+productNamesLink.get(i).getText());
-		//}
 	}
 
 	public void addToCartButton(Integer addQty) {
@@ -191,35 +187,67 @@ public class PurchaseItemsPage extends BaseClass{
 		clickOnElement(placeOrderPurchaseButton);
 	}
 
-	public void validateOrderIDSuccess() {
+	public void fetchOrderID() {
 		waitForElementVisibility(thankYouPurchaseText);
 		String orderId = orderIDText.getText();
-		orderId = Utilities.splitStringExtractText(orderId,"\n");
-		System.out.println("** Order "+orderId+" **");
+		String [] stringPart;
+		stringPart = Utilities.splitStringExtractText(orderId,"\n");
+		System.out.println("** Order "+stringPart[0]+" **");
 	}
 
 	public void clickOnPurchaseOrderOKButton() {
 		clickOnElement(purchaseOrderOKButton);
-		clickOnHomeLink();
+	}
+
+	public void clickOnLogoutLink()
+	{
+		jsClickElement(logoutLink);
 	}
 
 	public void clickOnPlaceOrderCloseButton() {
 		//clickOnElement(placeOrderCloseButton);
 	}
-	
-	public void addItemsToCart(String productType, String productName, Integer Qty) {
-		clickOnProductTypeLink(productType);
-		clickOnProductNameLink(productName);
-		addToCartButton(Qty);
-		productsInCart.put(productName, Qty);
-		clickOnHomeLink();
+
+	public void addItemsToCart(String productType, String productName, String Qty) {
+		String[] productTypes = Utilities.splitStringExtractText(productType.trim(), ",");
+		String[] productNames = Utilities.splitStringExtractText(productName.trim(), ",");
+		String[] quantities = Utilities.splitStringExtractText(Qty.trim(), ",");
+		for (int i=0;i<productTypes.length;i++) {
+			String[] product = Utilities.splitStringExtractText(productNames[i], ":");
+			String[] quantity = Utilities.splitStringExtractText(quantities[i], ":");
+			if(product.length>1) {
+				for(int j=0;j<product.length;j++) {
+					System.out.print(productTypes[i].trim()+"  ");  // Laptops
+					//clickOnProductTypeLink(productTypes[i]);
+					System.out.print(product[j].trim()+"   ");		// Sony
+					//clickOnProductNameLink(product[j].trim());
+					System.out.println(quantity[j].trim()+"   ");	// 2
+					//addToCartButton(Integer.parseInt(quantity[j].trim()));
+					//productsInCart.put(product[j].trim(), Integer.parseInt(quantity[j].trim()));
+					//clickOnHomeLink();
+				}
+			}
+			else {
+				//System.out.print(productTypes[i].trim()+"  ");  // Laptops
+				clickOnProductTypeLink(productTypes[i].trim());
+				//System.out.print(product[0].trim()+"   ");		// Sony
+				clickOnProductNameLink(product[0].trim());
+				//System.out.println("1");	// 2
+				addToCartButton(Integer.parseInt(quantity[0].trim()));
+				productsInCart.put(product[0].trim(), Integer.parseInt(quantity[0].trim()));
+				//System.out.println("Single Product");
+				clickOnHomeLink();
+			}
+		}
 	}
-	
+
+
+
 	public void validateTotalCartValue() {
 		waitForElementVisibility(totalCartValue);
 		Assert.assertFalse(totalCartValue.getText().isBlank());
 	}
-	
+
 	public void validateAddedProductsInCart() {
 		int itemCount=0;
 		int cartValue=0;
@@ -227,30 +255,32 @@ public class PurchaseItemsPage extends BaseClass{
 		for(Map.Entry map : productsInCart.entrySet()){
 			for(int i=0;i<(int)map.getValue();i++) {
 				String productName = "//td[contains(text(),'"+map.getKey()+"')]";
-				
+
 				//System.out.println("productNameLocator: "+productName);
 				//productName = itemsInCart.toString().concat(productName);
 				//System.out.println("productNameLocatorConcatenate: "+productName);
-				
+
 				String productCost = productName+"/following-sibling::td";
 				productName = driver.findElement(By.xpath(productName)).getText();
 				productCost = driver.findElement(By.xpath(productCost)).getText();
-				
+
 				//System.out.println("Product Name: "+productName);
 				//System.out.println("Product Cost: "+productCost);
-				
+
 				cartValue=cartValue+Integer.parseInt(productCost);
 				itemCount=itemCount+1;
 			}    
 		}
 		Assert.assertEquals(Integer.parseInt(totalCartValue.getText()), cartValue);
 	}
-	
+
 	public void flushCartItems() throws InterruptedException {
+		Thread.sleep(2000);
 		if(!totalCartValue.getText().isBlank()) {
 			int itemCount = deleteCartItemCount.size();
 			for(int i=itemCount;i>0;i--) {
 				Thread.sleep(1000);
+				waitForElementToBeClickable(deleteCartItemLink);
 				clickOnElement(deleteCartItemLink);
 			}
 		}

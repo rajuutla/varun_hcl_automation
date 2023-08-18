@@ -19,19 +19,17 @@ Feature: Add product(s) to cart feature
       | Laptops     | Sony vaio i5 |          2 |
 
   @Smoke
-  Scenario Outline: Validate items in cart and Cart Value
+ Scenario Outline: Validate items in cart and Cart Value
     Given User clears the cart
-    When User adds the following product "<productName1>" and quantity <productQty1> under category "<productType1>" to cart
-    And User adds the following product "<productName2>" and quantity <productQty2> under category "<productType2>" to cart
-    And User adds the following product "<productName3>" and quantity <productQty3> under category "<productType3>" to cart
-    But User navigates to cart
+    When User adds the following product "<productName>" and quantity "<productQty>" under category "<productType>" to cart
+    And User navigates to cart
     Then validate that selected products are added to cart
     And User clears the cart
     And User clicks on Logout button
 
     Examples: 
-      | productType1 | productName1 | productQty1 | productType2 | productName2  | productQty2 | productType3 | productName3     | productQty3 |
-      | Laptops      | Sony vaio i5 |           2 | Phones       | Iphone 6 32gb |           3 | Monitors     | Apple monitor 24 |           1 |
+      | productType 							| productName | productQty |
+      | Laptops,Phones, Monitors  | Sony vaio i5: MacBook Pro,Samsung galaxy s6: Iphone 6 32gb, Apple monitor 24	|1:2,1:2,2  | 
 
   @Smoke
   Scenario Outline: Purchase product(s) added in cart
@@ -45,7 +43,7 @@ Feature: Add product(s) to cart feature
     And User enters year in Year field "28"
     And User clicks on Purchase button
     Then validate that order ID is generated
-    And User clicks on Logout button
+    And User Logout of the application after final purchase
 
     Examples: 
       | productType | productName      | productQty |

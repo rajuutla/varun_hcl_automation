@@ -100,12 +100,12 @@ public class PurchaseItemsStepDef {
 
 	@Then("validate that order ID is generated")
 	public void validate_that_order_id_is_generated() throws InterruptedException {
-		purchaseItems.validateOrderIDSuccess();
+		purchaseItems.fetchOrderID();
 		purchaseItems.clickOnPurchaseOrderOKButton();
 	}
 	
-	@When("User adds the following product {string} and quantity {int} under category {string} to cart")
-	public void user_adds_the_following_product_and_quantity_under_category_to_cart(String productName, Integer Qty, String productType) {
+	@When("User adds the following product {string} and quantity {string} under category {string} to cart")
+	public void user_adds_the_following_product_and_quantity_under_category_to_cart(String productName, String Qty, String productType) {
 		purchaseItems.addItemsToCart(productType, productName, Qty);
 	}
 	
@@ -115,4 +115,9 @@ public class PurchaseItemsStepDef {
 		purchaseItems.flushCartItems();
 	}
 
+	@Then ("User Logout of the application after final purchase")
+	public void user_logout_of_the_application_after_final_purchase() {
+		purchaseItems.clickOnLogoutLink();
+	}
+	
 }
