@@ -217,14 +217,14 @@ public class PurchaseItemsPage extends BaseClass{
 			String[] quantity = Utilities.splitStringExtractText(quantities[i], ":");
 			if(product.length>1) {
 				for(int j=0;j<product.length;j++) {
-					System.out.print(productTypes[i].trim()+"  ");  // Laptops
-					//clickOnProductTypeLink(productTypes[i]);
-					System.out.print(product[j].trim()+"   ");		// Sony
-					//clickOnProductNameLink(product[j].trim());
-					System.out.println(quantity[j].trim()+"   ");	// 2
-					//addToCartButton(Integer.parseInt(quantity[j].trim()));
-					//productsInCart.put(product[j].trim(), Integer.parseInt(quantity[j].trim()));
-					//clickOnHomeLink();
+					//System.out.print(productTypes[i].trim()+"  ");  // Laptops
+					clickOnProductTypeLink(productTypes[i]);
+					//System.out.print(product[j].trim()+"   ");		// Sony
+					clickOnProductNameLink(product[j].trim());
+					//System.out.println(quantity[j].trim()+"   ");	// 2
+					addToCartButton(Integer.parseInt(quantity[j].trim()));
+					productsInCart.put(product[j].trim(), Integer.parseInt(quantity[j].trim()));
+					clickOnHomeLink();
 				}
 			}
 			else {
