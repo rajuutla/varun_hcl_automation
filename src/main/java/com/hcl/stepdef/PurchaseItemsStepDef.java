@@ -41,7 +41,7 @@ public class PurchaseItemsStepDef {
 	}
 	
 	@Then("validate that selected products are added to cart")
-	public void validate_that_selected_products_are_added_to_cart() {
+	public void validate_that_selected_products_are_added_to_cart() throws InterruptedException {
 		purchaseItems.validateAddedProductsInCart();
 	}
 

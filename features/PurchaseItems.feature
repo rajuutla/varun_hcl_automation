@@ -29,7 +29,7 @@ Feature: Add product(s) to cart feature
 
     Examples: 
       | productType 							| productName | productQty |
-      | Laptops,Phones, Monitors  | Sony vaio i5: MacBook Pro,Samsung galaxy s6: Iphone 6 32gb, Apple monitor 24	|1:2,1:2,2  | 
+      | Laptops,Phones, Monitors  | Sony vaio i5: MacBook Pro,Samsung galaxy s6: Iphone 6 32gb, Apple monitor 24	|1:5,1:5,2  | 
 
   @Smoke
   Scenario Outline: Purchase product(s) added in cart
