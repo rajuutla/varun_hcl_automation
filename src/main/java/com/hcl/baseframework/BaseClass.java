@@ -5,7 +5,9 @@ import java.time.Duration;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -30,7 +32,7 @@ public class BaseClass {
 	}
 
 	public void waitForAlertPresence() {
-		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(10)); 
+		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(30)); 
 		wait.until(ExpectedConditions.alertIsPresent());
 	}
 
@@ -76,6 +78,7 @@ public class BaseClass {
 		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
+	
 	
 	public WebElement getDriverElement(String locator1, String locator2) {
 		return DriverUtils.driver.findElement(By.xpath(locator1+locator2));

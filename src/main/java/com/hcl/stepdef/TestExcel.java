@@ -12,12 +12,21 @@ public class TestExcel {
 	      dd.getCellDataasstring(1, 0);
 	      dd.getCellDataasstring(1, 1);
 	      //dd.getCellDataasstring(1, 3);
+	      System.out.println();
 	      dd.getCellDataasstring(2, 0);
 	      dd.getCellDataasstring(2, 1);
+	      System.out.println();
 	      dd.getCellDataasnumber(3, 0);
 	      dd.getCellDataasnumber(3, 1);
+	      System.out.println();
 	      dd.getCellDataasnumber(4, 0);
 	      dd.getCellDataasnumber(4, 1);
+	      System.out.println();
+	      dd.getCellDataasnumber(5, 0);
+	      dd.getCellDataasnumber(5, 1);
+	      System.out.println();
+	      dd.getCellDataasnumber(6, 0);
+	      dd.getCellDataasnumber(6, 1);
 	}
 
 }

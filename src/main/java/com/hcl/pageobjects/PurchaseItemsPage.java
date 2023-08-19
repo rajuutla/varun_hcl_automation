@@ -15,103 +15,107 @@ import com.hcl.baseframework.BaseClass;
 import com.hcl.baseframework.DriverUtils;
 import com.hcl.baseframework.Utilities;
 
-public class PurchaseItemsPage extends BaseClass{
+public class PurchaseItemsPage extends BaseClass {
 
 	HashMap<String, Integer> productsInCart = new HashMap<String, Integer>();
-	public static String productType ="";
-	public String productTypeLinkName =" ";
+	public static String productType = "";
+	public String productTypeLinkName = " ";
 	WebDriver driver = DriverUtils.driver;
 
 	public PurchaseItemsPage() {
-		// super(driver);								// Old Code
+		// super(driver); // Old Code
 		PageFactory.initElements(DriverUtils.driver, this);
 	}
 
-
-	@FindBy(xpath="//*[contains(text(),'Phones')]")
+	@FindBy(xpath = "//*[contains(text(),'Phones')]")
 	WebElement PhonesLink;
 
-	@FindBy(xpath="//*[contains(text(),'Laptops')]")
+	@FindBy(xpath = "//*[contains(text(),'Laptops')]")
 	WebElement LaptopsLink;
 
-	@FindBy(xpath="//*[contains(text(),'Monitors')]")
+	@FindBy(xpath = "//*[contains(text(),'Monitors')]")
 	WebElement MonitorsLink;
 
-	@FindBy(xpath="")
+	@FindBy(xpath = "")
 	WebElement AppleMonitor24Link;
 
-	/*@FindAll({
-		@FindBy(xpath=("//h4[@class='card-title']")) 
-		//@FindBy(xpath=("//h4[@class='card-title]"))
-	})
-	List<WebElement> productNamesLinks;	*/
+	/*
+	 * @FindAll({
+	 * 
+	 * @FindBy(xpath=("//h4[@class='card-title']"))
+	 * //@FindBy(xpath=("//h4[@class='card-title]")) }) List<WebElement>
+	 * productNamesLinks;
+	 */
 
-	@FindBy(xpath=("//h4[@class='card-title']/a"))
+	@FindBy(xpath = ("//h4[@class='card-title']/a"))
 	WebElement productNamesLink;
 
-	@FindBy(xpath="//*[contains(text(),'Add to cart')]")
+	@FindBy(xpath = "//*[contains(text(),'Add to cart')]")
 	WebElement addToCartButton;
 
-	@FindBy(xpath=("//tr[@class='success']"))
+	@FindBy(xpath = ("//tr[@class='success']"))
 	List<WebElement> itemsInCart;
 
-	@FindBy(linkText="Delete")
+	@FindBy(linkText = "Delete")
 	List<WebElement> deleteCartItemCount;
 
-	@FindBy(linkText="Delete")
+	@FindBy(linkText = "Delete")
 	WebElement deleteCartItemLink;
 
-	@FindBy(id="totalp")
+	@FindBy(xpath = "//h2[contains(text(),'Total')]")
+	WebElement totalTextLabel;
+
+	@FindBy(id = "totalp")
 	WebElement totalCartValue;
 
-	@FindBy(xpath="//*[contains(text(),'Cart')]")
+	@FindBy(xpath = "//*[contains(text(),'Cart')]")
 	WebElement cartLink;
 
-	@FindBy(partialLinkText="Home")
+	@FindBy(partialLinkText = "Home")
 	WebElement homeLink;
 
-	@FindBy(xpath="//button[(text()='Place Order')]")
+	@FindBy(xpath = "//button[(text()='Place Order')]")
 	WebElement placeOrderButton;
 
-	@FindBy(id="name")
+	@FindBy(id = "name")
 	WebElement placeOrderNameTextField;
 
-	@FindBy(id="country")
+	@FindBy(id = "country")
 	WebElement placeOrderCountryTextField;
 
-	@FindBy(id="city")
+	@FindBy(id = "city")
 	WebElement placeOrderCityTextField;
 
-	@FindBy(id="card")
+	@FindBy(id = "card")
 	WebElement placeOrderCreditCardTextField;
 
-	@FindBy(id="month")
+	@FindBy(id = "month")
 	WebElement placeOrderMonthTextField;
 
-	@FindBy(id="year")
+	@FindBy(id = "year")
 	WebElement placeOrderYearTextField;
 
-	@FindBy(xpath="//*[contains(text(),'Purchase')]/preceding-sibling::button")
+	@FindBy(xpath = "//*[contains(text(),'Purchase')]/preceding-sibling::button")
 	WebElement placeOrderCloseButton;
 
-	@FindBy(xpath="//button[(text()='Purchase')]")
+	@FindBy(xpath = "//button[(text()='Purchase')]")
 	WebElement placeOrderPurchaseButton;
 
-	@FindBy(xpath="//*[contains(text(),'Thank you for your purchase!')]")
+	@FindBy(xpath = "//*[contains(text(),'Thank you for your purchase!')]")
 	WebElement thankYouPurchaseText;
 
-	@FindBy(xpath="//p[@class = 'lead text-muted ']")
+	@FindBy(xpath = "//p[@class = 'lead text-muted ']")
 	WebElement orderIDText;
 
-	@FindBy(xpath="//button[(text()='OK')]")
+	@FindBy(xpath = "//button[(text()='OK')]")
 	WebElement purchaseOrderOKButton;
 
-	@FindBy(id="logout2")
+	@FindBy(id = "logout2")
 	WebElement logoutLink;
 
 	public void clickOnProductTypeLink(String productLink) {
-		switch(productLink) {
-		case "Phones": 
+		switch (productLink) {
+		case "Phones":
 			scrollPage(PhonesLink);
 			clickOnElement(PhonesLink);
 			break;
@@ -155,32 +159,32 @@ public class PurchaseItemsPage extends BaseClass{
 
 	public void enterPlaceOrderNameTextField(String name) {
 		clickOnElement(placeOrderNameTextField);
-		typeText(placeOrderNameTextField,name);
+		typeText(placeOrderNameTextField, name);
 	}
 
 	public void enterPlaceOrderCountryTextField(String country) {
 		clickOnElement(placeOrderCountryTextField);
-		typeText(placeOrderCountryTextField,country);
+		typeText(placeOrderCountryTextField, country);
 	}
 
 	public void enterPlaceOrderCityTextField(String city) {
 		clickOnElement(placeOrderCityTextField);
-		typeText(placeOrderCityTextField,city);
+		typeText(placeOrderCityTextField, city);
 	}
 
 	public void enterPlaceOrderCreditCardTextField(String card) {
 		clickOnElement(placeOrderCreditCardTextField);
-		typeText(placeOrderCreditCardTextField,card);
+		typeText(placeOrderCreditCardTextField, card);
 	}
 
 	public void enterPlaceOrderMonthTextField(String month) {
 		clickOnElement(placeOrderMonthTextField);
-		typeText(placeOrderMonthTextField,month);
+		typeText(placeOrderMonthTextField, month);
 	}
 
 	public void enterPlaceOrderYearTextField(String year) {
 		clickOnElement(placeOrderYearTextField);
-		typeText(placeOrderYearTextField,year);
+		typeText(placeOrderYearTextField, year);
 	}
 
 	public void clickOnPlaceOrderPurchaseButton() {
@@ -190,41 +194,39 @@ public class PurchaseItemsPage extends BaseClass{
 	public void fetchOrderID() {
 		waitForElementToBeVisible(thankYouPurchaseText);
 		String orderId = orderIDText.getText();
-		String [] stringPart;
-		stringPart = Utilities.splitStringExtractText(orderId,"\n");
-		System.out.println("** Order "+stringPart[0]+" **");
+		String[] stringPart;
+		stringPart = Utilities.splitStringExtractText(orderId, "\n");
+		System.out.println("** Order " + stringPart[0] + " **");
 	}
 
 	public void clickOnPurchaseOrderOKButton() {
 		clickOnElement(purchaseOrderOKButton);
 	}
 
-	public void clickOnLogoutLink()
-	{
+	public void clickOnLogoutLink() {
 		jsClickElement(logoutLink);
 	}
 
 	public void clickOnPlaceOrderCloseButton() {
-		//clickOnElement(placeOrderCloseButton);
+		// clickOnElement(placeOrderCloseButton);
 	}
 
 	public void addItemsToCart(String productType, String productName, String Qty) {
 		String[] productTypes = Utilities.splitStringExtractText(productType.trim(), ",");
 		String[] productNames = Utilities.splitStringExtractText(productName.trim(), ",");
 		String[] quantities = Utilities.splitStringExtractText(Qty.trim(), ",");
-		for (int i=0;i<productTypes.length;i++) {
+		for (int i = 0; i < productTypes.length; i++) {
 			String[] product = Utilities.splitStringExtractText(productNames[i], ":");
 			String[] quantity = Utilities.splitStringExtractText(quantities[i], ":");
-			if(product.length>1) {
-				for(int j=0;j<product.length;j++) {
+			if (product.length > 1) {
+				for (int j = 0; j < product.length; j++) {
 					clickOnProductTypeLink(productTypes[i]);
 					clickOnProductNameLink(product[j].trim());
 					addToCartButton(Integer.parseInt(quantity[j].trim()));
 					productsInCart.put(product[j].trim(), Integer.parseInt(quantity[j].trim()));
 					clickOnHomeLink();
 				}
-			}
-			else {
+			} else {
 				clickOnProductTypeLink(productTypes[i].trim());
 				clickOnProductNameLink(product[0].trim());
 				addToCartButton(Integer.parseInt(quantity[0].trim()));
@@ -234,51 +236,57 @@ public class PurchaseItemsPage extends BaseClass{
 		}
 	}
 
-
-
 	public void validateTotalCartValue() {
 		waitForElementToBeVisible(totalCartValue);
 		Assert.assertFalse(totalCartValue.getText().isBlank());
 	}
 
-	public void validateAddedProductsInCart() {
-		int itemCount=0;
-		int cartValue=0;
-		//int itemsInCart = driver.findElements(By.xpath("//tr[@class='success']")).size();
-		for(Map.Entry map : productsInCart.entrySet()){
-			for(int i=0;i<(int)map.getValue();i++) {
-				String productName = "//td[contains(text(),'"+map.getKey()+"')]";
+	public void validateAddedProductsInCart() throws InterruptedException {
+		waitForElementToBeVisible(totalCartValue);
+		int itemCount = 0;
+		int cartValue = 0;
+		// int itemsInCart =
+		// driver.findElements(By.xpath("//tr[@class='success']")).size();
+		for (Map.Entry map : productsInCart.entrySet()) {
+			for (int i = 0; i < (int) map.getValue(); i++) {
+				String productName = "//td[contains(text(),'" + map.getKey() + "')]";
 
-				//System.out.println("productNameLocator: "+productName);
-				//productName = itemsInCart.toString().concat(productName);
-				//System.out.println("productNameLocatorConcatenate: "+productName);
+				// System.out.println("productNameLocator: "+productName);
+				// productName = itemsInCart.toString().concat(productName);
+				// System.out.println("productNameLocatorConcatenate: "+productName);
 
-				String productCost = productName+"/following-sibling::td";
+				String productCost = productName + "/following-sibling::td";
 				productName = driver.findElement(By.xpath(productName)).getText();
 				productCost = driver.findElement(By.xpath(productCost)).getText();
 
-				//System.out.println("Product Name: "+productName);
-				//System.out.println("Product Cost: "+productCost);
+				// System.out.println("Product Name: "+productName);
+				// System.out.println("Product Cost: "+productCost);
 
-				cartValue=cartValue+Integer.parseInt(productCost);
-				itemCount=itemCount+1;
-			}    
+				cartValue = cartValue + Integer.parseInt(productCost);
+				itemCount = itemCount + 1;
+			}
 		}
 		Assert.assertEquals(Integer.parseInt(totalCartValue.getText()), cartValue);
 	}
 
 	public void flushCartItems() throws InterruptedException {
-		//Thread.sleep(2000);
+		// Thread.sleep(2000);
 		waitForElementToBeVisible(totalCartValue);
-		if(!totalCartValue.getText().isBlank()) {
+		// waitForElementToBeVisible(totalTextLabel);
+		System.out.println("Total Cart Value: " + totalCartValue.getText());
+		if (!totalCartValue.getText().isBlank()) {
 			int itemCount = deleteCartItemCount.size();
-			System.out.println("No. of products to be Deleted: "+itemCount);
-			for(int i=itemCount;i>0;i--) {
-				Thread.sleep(1500);
-				System.out.println("***Product Deleted");
+			System.out.println("No. of products to be Deleted: " + itemCount);
+			for (int i = itemCount; i > 0; i--) {
+				waitForElementToBeVisible(totalCartValue);
+				Thread.sleep(1000);
 				clickOnElement(deleteCartItemLink);
+				// System.out.println("***Product Deleted");
+
 			}
-		}
+		} else
+			System.out.println("Cart Empty");
 		clickOnHomeLink();
 	}
+
 }

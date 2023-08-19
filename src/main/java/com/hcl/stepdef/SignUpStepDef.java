@@ -12,7 +12,7 @@ public class SignUpStepDef {
 
 	@Given("Initialize the elements on the SignUp page")
 	public void initialize_the_elements_on_the_signup_page() {
-		signUp = new SignUpPage();  // New Code
+		signUp = new SignUpPage(); // New Code
 	}
 
 	@When("User clicks on Signup link")
@@ -23,7 +23,7 @@ public class SignUpStepDef {
 	@When("User enters the new email and password on signup popup")
 	public void user_enters_the_new_email_and_password_on_signup_popup() {
 		int randomNumber = Utilities.randomNumberGenerator();
-		signUp.enterUsernamePasswordSignUp("username"+randomNumber+"@gmail.com", "abcd123");
+		signUp.enterUsernamePasswordSignUp("username" + randomNumber + "@gmail.com", "abcd123");
 	}
 
 	@When("User clicks on Signup button on the signup popup")
@@ -45,16 +45,5 @@ public class SignUpStepDef {
 	public void validate_that_signup_is_unsuccessful() {
 		signUp.validateSignupFail();
 	}
-
-	/*@AfterStep
-	public void addScreenShot(Scenario sc) {
-		final byte[] screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-		sc.attach(screen, "image/png", sc.getName());
-
-	}*/
-
-
-
-
 
 }
