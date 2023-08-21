@@ -1,5 +1,6 @@
 package com.hcl.pageobjects;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.regex.Pattern;
 
@@ -14,6 +15,7 @@ import org.testng.Assert;
 
 import com.hcl.baseframework.BaseClass;
 import com.hcl.baseframework.DriverUtils;
+import com.hcl.baseframework.ExcelUtils;
 
 public class SignInPage extends BaseClass{
 
@@ -67,18 +69,18 @@ public class SignInPage extends BaseClass{
 		Assert.assertTrue(welcomeUserText.getText().startsWith("Welcome"));
 	}
 
-	public void validateSignInFailInvalidPassword() throws InterruptedException {
+	public void validateSignInFailInvalidPassword() throws InterruptedException, IOException {
 		Thread.sleep(1000);
 		//System.out.println(handleAlert("getText"));
-		Assert.assertTrue(handleAlert("getText").equals("Wrong password."));
+		Assert.assertTrue(handleAlert("getText").equals(ExcelUtils.getExcelData("warningMessages", "SignIn_Wrong_Password")));
 		handleAlert("accept");
 		clickOnElement(closeButton);
 	}
 
-	public void validateSignInFailUnregisteredUser() throws InterruptedException {
+	public void validateSignInFailUnregisteredUser() throws InterruptedException, IOException {
 		Thread.sleep(1000);
 		//System.out.println(handleAlert("getText"));
-		Assert.assertTrue(handleAlert("getText").equals("User does not exist."));
+		Assert.assertTrue(handleAlert("getText").equals(ExcelUtils.getExcelData("warningMessages", "SignIn_User_Not_Exists")));
 		handleAlert("accept");
 		clickOnElement(closeButton);
 	}
@@ -87,8 +89,8 @@ public class SignInPage extends BaseClass{
 		clickOnElement(logoutLink);
 	}
 
-	public void validateMissingUsernamePassword() {
-		Assert.assertTrue(handleAlert("getText").equals("Please fill out Username and Password."));
+	public void validateMissingUsernamePassword() throws IOException {
+		Assert.assertTrue(handleAlert("getText").equals(ExcelUtils.getExcelData("warningMessages", "SignIn_Missing_Username_Password")));
 		handleAlert("accept");
 		clickOnElement(closeButton);
 	}

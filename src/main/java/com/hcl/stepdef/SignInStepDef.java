@@ -1,5 +1,7 @@
 package com.hcl.stepdef;
 
+import java.io.IOException;
+
 import com.hcl.pageobjects.SignInPage;
 
 import io.cucumber.java.en.Given;
@@ -36,17 +38,17 @@ public class SignInStepDef {
 	}
 
 	@Then("validate that Signin is unsuccessful for invalid password")
-	public void validate_that_signin_is_unsuccessful_for_invalid_password() throws InterruptedException {
+	public void validate_that_signin_is_unsuccessful_for_invalid_password() throws InterruptedException, IOException {
 		signIn.validateSignInFailInvalidPassword();
 	}
 
 	@Then("validate that Signin is unsuccesful for unregistered user")
-	public void validate_that_signin_is_unsuccesful_for_unregistered_user() throws InterruptedException {
+	public void validate_that_signin_is_unsuccesful_for_unregistered_user() throws InterruptedException, IOException {
 		signIn.validateSignInFailUnregisteredUser();
 	}
 
 	@Then ("validate that missing username or password error")
-	public void validate_that_missing_username_or_password_error() {
+	public void validate_that_missing_username_or_password_error() throws IOException {
 		signIn.validateMissingUsernamePassword();
 	}
 

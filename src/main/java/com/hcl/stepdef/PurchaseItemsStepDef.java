@@ -1,5 +1,7 @@
 package com.hcl.stepdef;
 
+import java.io.IOException;
+
 import com.hcl.pageobjects.PurchaseItemsPage;
 
 import io.cucumber.java.en.Given;
@@ -26,7 +28,7 @@ public class PurchaseItemsStepDef {
 	}
 
 	@When("User adds multiple quantities {int} of above product to cart")
-	public void user_adds_multiple_quantities_of_above_product_to_cart(Integer Qty) {
+	public void user_adds_multiple_quantities_of_above_product_to_cart(Integer Qty) throws IOException {
 		purchaseItems.addToCartButton(Qty);
 	}
 
@@ -51,7 +53,7 @@ public class PurchaseItemsStepDef {
 	}
 
 	@Given("User has added product {string} and quantity {int} under category {string} to cart")
-	public void user_has_added_product_and_quantity_under_category_to_cart(String productName, Integer Qty, String productType) {
+	public void user_has_added_product_and_quantity_under_category_to_cart(String productName, Integer Qty, String productType) throws IOException {
 		user_clicks_on_product_type_link(productType);
 		user_searches_for_a_product(productName);
 		user_adds_multiple_quantities_of_above_product_to_cart(Qty);
@@ -105,7 +107,7 @@ public class PurchaseItemsStepDef {
 	}
 	
 	@When("User adds the following product {string} and quantity {string} under category {string} to cart")
-	public void user_adds_the_following_product_and_quantity_under_category_to_cart(String productName, String Qty, String productType) {
+	public void user_adds_the_following_product_and_quantity_under_category_to_cart(String productName, String Qty, String productType) throws NumberFormatException, IOException {
 		purchaseItems.addItemsToCart(productType, productName, Qty);
 	}
 	

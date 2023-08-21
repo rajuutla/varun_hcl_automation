@@ -13,7 +13,6 @@ public class DriverUtils {
 
 	public static WebDriver driver = null;
 
-	//@Before
 	public static void getDriver() {
 
 		String browserType = System.getProperty("browser");
@@ -28,7 +27,6 @@ public class DriverUtils {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 	}
 
-	//@After
 	public static void  tearDown() {
 		if (driver!=null)
 			driver.quit();
