@@ -1,5 +1,6 @@
 package com.hcl.pageobjects;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.testng.Assert;
 
 import com.hcl.baseframework.BaseClass;
 import com.hcl.baseframework.DriverUtils;
+import com.hcl.baseframework.ExcelUtils;
 import com.hcl.baseframework.Utilities;
 
 public class PurchaseItemsPage extends BaseClass {
@@ -136,11 +138,11 @@ public class PurchaseItemsPage extends BaseClass {
 		clickOnElement(DriverUtils.driver.findElement(By.partialLinkText(productName)));
 	}
 
-	public void addToCartButton(Integer addQty) {
+	public void addToCartButton(Integer addQty) throws IOException {
 		for (int i = 0; i < addQty; i++) {
 			clickOnElement(addToCartButton);
 			handleAlert("getText");
-			Assert.assertEquals(handleAlert("getText"), "Product added.");
+			Assert.assertEquals(handleAlert("getText"), ExcelUtils.getExcelData("warningMessages", "AddToCart_ProductAdded"));
 			handleAlert("accept");
 		}
 	}
@@ -211,7 +213,7 @@ public class PurchaseItemsPage extends BaseClass {
 		// clickOnElement(placeOrderCloseButton);
 	}
 
-	public void addItemsToCart(String productType, String productName, String Qty) {
+	public void addItemsToCart(String productType, String productName, String Qty) throws NumberFormatException, IOException {
 		String[] productTypes = Utilities.splitStringExtractText(productType.trim(), ",");
 		String[] productNames = Utilities.splitStringExtractText(productName.trim(), ",");
 		String[] quantities = Utilities.splitStringExtractText(Qty.trim(), ",");

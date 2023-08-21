@@ -1,62 +1,49 @@
 package com.hcl.baseframework;
 
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Iterator;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.util.NumberToTextConverter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelUtils {
 
-	private XSSFSheet ExcelWSheet;
-	private XSSFWorkbook ExcelWBook;
-
 	// Constructor to connect to the Excel with sheetname and Path
-	public ExcelUtils(String Path, String SheetName) throws Exception {
-	   
-	      try {
-	         // Open the Excel file
-	         FileInputStream ExcelFile = new FileInputStream(Path);
-	         
-	         // Access the required test data sheet
-	         ExcelWBook = new XSSFWorkbook(ExcelFile);
-	         ExcelWSheet = ExcelWBook.getSheet(SheetName);
-	      } catch (Exception e) {
-	         throw (e);
-	      }
-	   }
+	/*
+	 * public ExcelUtils(String Path, String SheetName) throws IOException {
+	 * 
+	 * 
+	 * }
+	 */
+	public static String getExcelData(String SheetName, String WarningMessage) throws IOException {
 
-	// This method is to set the rowcount of the excel.
-	public int excel_get_rows() throws Exception {
+		FileInputStream ExcelFile = new FileInputStream("WarningMessages.xlsx");
 
-		try {
-			return ExcelWSheet.getPhysicalNumberOfRows();
-		} catch (Exception e) {
-			throw (e);
+		// Access the required test data sheet
+		XSSFWorkbook ExcelWBook = new XSSFWorkbook(ExcelFile);
+		XSSFSheet ExcelWSheet = ExcelWBook.getSheet(SheetName);
+		//System.out.println(ExcelWSheet.getPhysicalNumberOfRows());
+		//int rowcount = ExcelWSheet.getPhysicalNumberOfRows();
+		String warningMessageValue = null;
+		Iterator<Row> rows = ExcelWSheet.iterator(); // sheet is collection of rows
+		while (rows.hasNext()) {
+			Row row = rows.next();
+			Iterator<Cell> cells = row.cellIterator();// row is collection of cells
+			while (cells.hasNext()) {
+				Cell value = cells.next();
+				if (value.getStringCellValue().trim().equalsIgnoreCase(WarningMessage)) {
+					value = cells.next();
+					warningMessageValue =  value.getStringCellValue();
+				}
+			}
 		}
-	}
+		ExcelWBook.close();
+		return warningMessageValue;
 
-	// This method to get the data and get the value as strings.
-	public String getCellDataasstring(int RowNum, int ColNum) throws Exception {
-
-		try {
-			String CellData = ExcelWSheet.getRow(RowNum).getCell(ColNum).getStringCellValue();
-			//System.out.println("The value of CellData " + CellData);
-			System.out.println(" " + CellData);
-			return CellData;
-		} catch (Exception e) {
-			return "Errors in Getting Cell Data";
-		}
-	}
-
-	// This method to get the data and get the value as number.
-	public double getCellDataasnumber(int RowNum, int ColNum) throws Exception {
-
-		try {
-			double CellData = ExcelWSheet.getRow(RowNum).getCell(ColNum).getNumericCellValue();
-			System.out.println("The value of CellData " + CellData);
-			return CellData;
-		} catch (Exception e) {
-			return 000.00;
-		}
 	}
 }

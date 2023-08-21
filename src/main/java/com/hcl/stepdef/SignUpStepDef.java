@@ -1,5 +1,7 @@
 package com.hcl.stepdef;
 
+import java.io.IOException;
+
 import com.hcl.baseframework.Utilities;
 import com.hcl.pageobjects.SignUpPage;
 import io.cucumber.java.en.Given;
@@ -32,7 +34,7 @@ public class SignUpStepDef {
 	}
 
 	@Then("validate that signup is successful")
-	public void validate_that_signup_is_successful() {
+	public void validate_that_signup_is_successful() throws IOException {
 		signUp.validateSignupSuccess();
 	}
 
@@ -42,7 +44,7 @@ public class SignUpStepDef {
 	}
 
 	@Then("validate that signup is unsuccessful")
-	public void validate_that_signup_is_unsuccessful() {
+	public void validate_that_signup_is_unsuccessful() throws IOException {
 		signUp.validateSignupFail();
 	}
 

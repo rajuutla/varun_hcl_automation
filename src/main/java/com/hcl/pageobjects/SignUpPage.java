@@ -1,5 +1,7 @@
 package com.hcl.pageobjects;
 
+import java.io.IOException;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import com.hcl.baseframework.BaseClass;
 import com.hcl.baseframework.DriverUtils;
+import com.hcl.baseframework.ExcelUtils;
 
 public class SignUpPage extends BaseClass {
 
@@ -53,16 +56,17 @@ public class SignUpPage extends BaseClass {
 		clickOnElement(signUpButton);
 	}
 
-	public void validateSignupSuccess() {
+	public void validateSignupSuccess() throws IOException {
 
 		// return actualMessage.equals(expectedMessage)? true : false;
-		Assert.assertTrue((handleAlert("getText").equals("Sign up successful.")));
+		Assert.assertTrue((handleAlert("getText").equals(ExcelUtils.getExcelData("warningMessages", "SignUp_Success"))));
 		handleAlert("accept");
 	}
 
-	public void validateSignupFail() {
+	public void validateSignupFail() throws IOException {
 		//System.out.println(handleAlert("getText"));
-		Assert.assertTrue((handleAlert("getText").equals("This user already exist.")));
+		Assert.assertTrue((handleAlert("getText").equals(ExcelUtils.getExcelData("warningMessages", "SignUp_User_Exists"))));
+		
 		handleAlert("accept");
 		clickOnElement(closeButton);
 	}
