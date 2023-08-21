@@ -242,6 +242,7 @@ public class PurchaseItemsPage extends BaseClass {
 	}
 
 	public void validateAddedProductsInCart() throws InterruptedException {
+		Thread.sleep(2000);
 		waitForElementToBeVisible(totalCartValue);
 		int itemCount = 0;
 		int cartValue = 0;
@@ -270,7 +271,7 @@ public class PurchaseItemsPage extends BaseClass {
 	}
 
 	public void flushCartItems() throws InterruptedException {
-		// Thread.sleep(2000);
+		Thread.sleep(2000);
 		waitForElementToBeVisible(totalCartValue);
 		// waitForElementToBeVisible(totalTextLabel);
 		System.out.println("Total Cart Value: " + totalCartValue.getText());
