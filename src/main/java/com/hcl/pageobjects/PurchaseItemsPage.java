@@ -242,7 +242,7 @@ public class PurchaseItemsPage extends BaseClass {
 	}
 
 	public void validateAddedProductsInCart() throws InterruptedException {
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		waitForElementToBeVisible(totalCartValue);
 		int itemCount = 0;
 		int cartValue = 0;

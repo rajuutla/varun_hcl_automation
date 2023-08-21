@@ -7,9 +7,9 @@ Feature: Add product(s) to cart feature
 
   @Run
 Scenario Outline: Validate items in cart and Cart Value
-    #When User adds the following product "<productName>" and quantity "<productQty>" under category "<productType>" to cart
-    #And User navigates to cart
-    #Then validate that selected products are added to cart
+    When User adds the following product "<productName>" and quantity "<productQty>" under category "<productType>" to cart
+    And User navigates to cart
+    Then validate that selected products are added to cart
     And User clears the cart
     And User clicks on Logout button
 
