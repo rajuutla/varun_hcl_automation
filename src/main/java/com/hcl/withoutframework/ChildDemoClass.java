@@ -7,13 +7,20 @@ package com.hcl.withoutframework;
 public class ChildDemoClass extends ParentDemoClass {
 
 	String name = "Class - Variable ** Child Class **";
-	int a = 2;
+	int a;
 	//ParentDemoClass pdd = new ParentDemoClass();
 	
-	public ChildDemoClass() {
+	
+	  public ChildDemoClass() { 
+		  super("Varun"); 
+		  System.out.println(super.name +" ** called in constructor **");
+		  System.out.println("Child Class Constructor"); }
+	 
+	
+	public ChildDemoClass(String str) {
 		super("Varun");
-		System.out.println(super.name + " ** called in constructor **");
-		System.out.println("Child Class Constructor");
+		//System.out.println(super.name + " ** called in constructor **");
+		System.out.println("Child Class Constructor -> "+str);
 	}
 	  
 	  public void getData() {
@@ -35,17 +42,20 @@ public class ChildDemoClass extends ParentDemoClass {
 		
 		System.out.println(name);
 		System.out.println(this.name);
-		System.out.println(a);
-		System.out.println(this.a);
+		System.out.println(a);		// 3
+		this.a = a;
+		System.out.println(this.a);	// 2
 		//System.out.println(super.name);
 	}
+
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		//ChildDemoClass cd = null;
+		ChildDemoClass cd;
 		System.out.println("Im in Main");
-		ChildDemoClass cd = new ChildDemoClass();
+		cd = new ChildDemoClass();
 		//cd.getData();
 		
 		//cd.getThisData();

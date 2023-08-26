@@ -10,51 +10,51 @@ import io.cucumber.java.en.When;
 
 public class SignInStepDef {
 
-	SignInPage signIn = null;
+	SignInPage signInPage = null;
 
 	@Given("Initialize the elements on the SignIn page")
 	public void initialize_the_elements_on_the_SignIn_page() {
-		signIn = new SignInPage();			
+		signInPage = new SignInPage();			
 	}
-
+	
 	@When("User clicks on Signin link")
 	public void user_clicks_on_signin_link() { 
-		signIn.clickOnSignInLink();
+		signInPage.clickOnSignInLink();
 	}
 
 	@When("User enters the username {string} and password {string} on signin popup")
 	public void user_enters_the_username_and_password_on_signin_popup(String username, String password) {
-		signIn.enterUsernamePasswordSignIn(username, password);
+		signInPage.enterUsernamePasswordSignIn(username, password);
 	}
 
 	@When("User clicks on Signin button on the signin popup")
 	public void user_clicks_on_signin_button_on_the_signin_popup() throws InterruptedException {
-		signIn.clickOnSignInButton();
+		signInPage.clickOnSignInButton();
 	}
 
 	@Then("validate that Signin is successful")
 	public void validate_signin_is_successful()  {
-		signIn.validateSignInSuccess();
+		signInPage.validateSignInSuccess();
 	}
 
 	@Then("validate that Signin is unsuccessful for invalid password")
 	public void validate_that_signin_is_unsuccessful_for_invalid_password() throws InterruptedException, IOException {
-		signIn.validateSignInFailInvalidPassword();
+		signInPage.validateSignInFailInvalidPassword();
 	}
 
 	@Then("validate that Signin is unsuccesful for unregistered user")
 	public void validate_that_signin_is_unsuccesful_for_unregistered_user() throws InterruptedException, IOException {
-		signIn.validateSignInFailUnregisteredUser();
+		signInPage.validateSignInFailUnregisteredUser();
 	}
 
 	@Then ("validate that missing username or password error")
 	public void validate_that_missing_username_or_password_error() throws IOException {
-		signIn.validateMissingUsernamePassword();
+		signInPage.validateMissingUsernamePassword();
 	}
 
 	@Then("User clicks on Logout button")
 	public void user_clicks_on_logout_button() throws InterruptedException {
-		signIn.clickOnLogoutLink();
+		signInPage.clickOnLogoutLink();
 	}
 
 	@Given("User has Login into the application with username {string} and password {string}")

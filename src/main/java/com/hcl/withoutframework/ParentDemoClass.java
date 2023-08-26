@@ -5,10 +5,11 @@ public class ParentDemoClass {
 	
 	String name = "Class - Variable ** Parent Class **";
 	
-	public ParentDemoClass(String str) {
-		System.out.println("Parent Class constructor");
-		System.out.println("Parent Class Constuctor -> "+str);
-	}
+	
+	  public ParentDemoClass(String str) {
+	  System.out.println("Parent Class constructor");
+	  System.out.println("Parent Class Constuctor -> "+str); }
+	 
 
 	public void getData() {
 		System.out.println("getData - Parent Class");

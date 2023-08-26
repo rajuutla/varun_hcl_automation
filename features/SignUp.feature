@@ -4,14 +4,14 @@ Feature: Sign up feature
   Background: 
     Given Initialize the elements on the SignUp page
 
-  @Smoke
+  @SignUp
   Scenario: Signup with new user
     When User clicks on Signup link
     And User enters the new email and password on signup popup
     And User clicks on Signup button on the signup popup
     Then validate that signup is successful
 
-  @Negative
+  @SignUp
   Scenario Outline: Signup with existing user
     When User clicks on Signup link
     But User enters the existing email "<username>" and existing password "<password>" on signup popup

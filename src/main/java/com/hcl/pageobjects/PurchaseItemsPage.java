@@ -22,11 +22,11 @@ public class PurchaseItemsPage extends BaseClass {
 	HashMap<String, Integer> productsInCart = new HashMap<String, Integer>();
 	public static String productType = "";
 	public String productTypeLinkName = " ";
-	WebDriver driver = DriverUtils.driver;
+	
 
 	public PurchaseItemsPage() {
 		// super(driver); // Old Code
-		PageFactory.initElements(DriverUtils.driver, this);
+		PageFactory.initElements(DriverUtils.threadLocalDriver.get(), this);
 	}
 
 	@FindBy(xpath = "//*[contains(text(),'Phones')]")
@@ -135,7 +135,7 @@ public class PurchaseItemsPage extends BaseClass {
 	}
 
 	public void clickOnProductNameLink(String productName) {
-		clickOnElement(DriverUtils.driver.findElement(By.partialLinkText(productName)));
+		clickOnElement(DriverUtils.threadLocalDriver.get().findElement(By.partialLinkText(productName)));
 	}
 
 	public void addToCartButton(Integer addQty) throws IOException {
@@ -259,8 +259,8 @@ public class PurchaseItemsPage extends BaseClass {
 				// System.out.println("productNameLocatorConcatenate: "+productName);
 
 				String productCost = productName + "/following-sibling::td";
-				productName = driver.findElement(By.xpath(productName)).getText();
-				productCost = driver.findElement(By.xpath(productCost)).getText();
+				productName = DriverUtils.threadLocalDriver.get().findElement(By.xpath(productName)).getText();
+				productCost = DriverUtils.threadLocalDriver.get().findElement(By.xpath(productCost)).getText();
 
 				// System.out.println("Product Name: "+productName);
 				// System.out.println("Product Cost: "+productCost);

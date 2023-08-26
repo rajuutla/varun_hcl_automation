@@ -20,11 +20,13 @@ public class SignUpPage extends BaseClass {
 	// - enterUsername, enterpssword, clickonsignup
 	// - signupMethod
 
+	public WebDriver driver;
 	Alert alert = null;
 
 	public SignUpPage() {
-		//super(driver); 							// Old code
-		PageFactory.initElements(DriverUtils.driver, this);
+		super(); 			
+		//System.out.println("PageClass: "+Thread.currentThread().getId()+"  "+DriverUtils.threadLocalDriver.get());
+		PageFactory.initElements(DriverUtils.threadLocalDriver.get(), this);
 	}
 
 	@FindBy(id = "signin2")

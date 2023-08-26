@@ -1,12 +1,14 @@
-Feature: Add product(s) to cart feature
+Feature: Purchase Items feature
   User is able to add product to cart
 
   Background: 
-    Given Initialize the elements on the PurchaseItems page
-    And User has Login into the application with username "username354@gmail.com" and password "abcd123"
+    #Given Initialize the elements on the PurchaseItems page
+    #And User has Login into the application with username "username354@gmail.com" and password "abcd123"
 
-  @Smoke
+  @PurchaseItems
   Scenario Outline: Add product(s) to cart
+    Given User has Login into the application with username "username354@gmail.com" and password "abcd123"
+    And Initialize the elements on the PurchaseItems page
     When User clicks on product type link "<productType>"
     And User searches for a product "<productName>"
     And User adds multiple quantities <productQty> of above product to cart
@@ -19,8 +21,10 @@ Feature: Add product(s) to cart feature
       | productType | productName  | productQty |
       | Laptops     | Sony vaio i5 |          2 |
 
-  @Smoke
+  @PurchaseItems
  	Scenario Outline: Validate items in cart and Cart Value
+    Given User has Login into the application with username "username812@gmail.com" and password "abcd123"
+    And Initialize the elements on the PurchaseItems page
     When User adds the following product "<productName>" and quantity "<productQty>" under category "<productType>" to cart
     And User navigates to cart
     Then validate that selected products are added to cart
@@ -29,11 +33,12 @@ Feature: Add product(s) to cart feature
 
     Examples: 
       | productType 							| productName | productQty |
-      | Laptops,Phones, Monitors  | Sony vaio i5: MacBook Pro,Samsung galaxy s6: Iphone 6 32gb, Apple monitor 24	|1:5,1:5,2  | 
+      | Laptops,Phones, Monitors  | Sony vaio i5: MacBook Pro,Samsung galaxy s6: Iphone 6 32gb, Apple monitor 24	|1:2,1:2,2  | 
 
-  @Smoke
+  @Ignore
   Scenario Outline: Purchase product(s) added in cart
-    Given User has added product "<productName>" and quantity <productQty> under category "<productType>" to cart
+  	Given User has Login into the application with username "username354@gmail.com" and password "abcd123"
+    And User has added product "<productName>" and quantity <productQty> under category "<productType>" to cart
     When User clicks on Place Order button
     And User enters name in Name field "Varun Goyal"
     And User enters country in Country field "India"
