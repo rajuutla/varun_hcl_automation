@@ -19,11 +19,11 @@ import com.hcl.baseframework.ExcelUtils;
 
 public class SignInPage extends BaseClass{
 
-	WebDriver driver = null;
+	//WebDriver driver = null;
 
 	public SignInPage() {
 		// super(driver);			// Old Code
-		PageFactory.initElements(DriverUtils.driver, this);	
+		PageFactory.initElements(DriverUtils.threadLocalDriver.get(), this);	
 	}
 
 	@FindBy(id="login2")

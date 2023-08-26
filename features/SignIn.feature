@@ -4,7 +4,7 @@ Feature: Sign In feature
   Background: 
     Given Initialize the elements on the SignIn page
 
-  @Smoke
+  @SignIn
   Scenario Outline: Sign in successful
     When User clicks on Signin link
     And User enters the username "<username>" and password "<password>" on signin popup
@@ -16,7 +16,7 @@ Feature: Sign In feature
       | username              | password |
       | username354@gmail.com | abcd123  |
 
-  @Negative
+  @SignIn
   Scenario Outline: Sign in with invalid password
     When User clicks on Signin link
     But User enters the username "<username>" and password "<password>" on signin popup
@@ -27,7 +27,7 @@ Feature: Sign In feature
       | username              | password  |
       | username354@gmail.com | abcd12345 |
 
-  @Negative
+  @SignIn
   Scenario Outline: Sign in with unregistered user
     When User clicks on Signin link
     But User enters the username "<username>" and password "<password>" on signin popup
@@ -38,7 +38,7 @@ Feature: Sign In feature
       | username     | password  |
       | 19sl@abc.com | abcd12345 |
 
-  @Negative
+  @SignIn
   Scenario Outline: Sign in without password
     When User clicks on Signin link
     But User enters the username "<username>" and password "<password>" on signin popup

@@ -12,14 +12,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseClass {
+	
+	JavascriptExecutor js = null;
 
-	JavascriptExecutor js = (JavascriptExecutor) DriverUtils.driver;
-
-	//WebDriver driver = null;   						// Old Code
-
-	/*public BaseClass(WebDriver driver) {
-		this.driver = driver;
-	}*/ 												// Old Code
+	public BaseClass() {
+		//this.driver = driver;
+		//System.out.println("BaseClass: "+Thread.currentThread().getId()+"  "+DriverUtils.threadLocalDriver.get());
+		js = (JavascriptExecutor) DriverUtils.threadLocalDriver.get();
+	} 											
 
 	public void clickOnElement(WebElement element) {
 		waitForElementToBeVisible(element);
@@ -32,13 +32,13 @@ public class BaseClass {
 	}
 
 	public void waitForAlertPresence() {
-		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(30)); 
+		WebDriverWait wait = new WebDriverWait(DriverUtils.threadLocalDriver.get(), Duration.ofSeconds(30)); 
 		wait.until(ExpectedConditions.alertIsPresent());
 	}
 
 	public String handleAlert(String alertType) {
 		waitForAlertPresence();
-		Alert alert = DriverUtils.driver.switchTo().alert();  // New Code
+		Alert alert = DriverUtils.threadLocalDriver.get().switchTo().alert();  // New Code
 		switch(alertType) {
 		case "getText":
 			return alert.getText();
@@ -70,18 +70,18 @@ public class BaseClass {
 
 	
 	public void waitForElementToBeVisible(WebElement element) {
-		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(30));
+		WebDriverWait wait = new WebDriverWait(DriverUtils.threadLocalDriver.get(), Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
 	public void waitForElementToBeClickable(WebElement element) {
-		WebDriverWait wait = new WebDriverWait(DriverUtils.driver, Duration.ofSeconds(30));
+		WebDriverWait wait = new WebDriverWait(DriverUtils.threadLocalDriver.get(), Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 	
 	
 	public WebElement getDriverElement(String locator1, String locator2) {
-		return DriverUtils.driver.findElement(By.xpath(locator1+locator2));
+		return DriverUtils.threadLocalDriver.get().findElement(By.xpath(locator1+locator2));
 	}
 	
 }
