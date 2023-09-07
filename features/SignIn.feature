@@ -4,7 +4,7 @@ Feature: Sign In feature
   Background: 
     Given Initialize the elements on the SignIn page
 
-  @SignIn
+  @ui @SignIn
   Scenario Outline: Sign in successful
     When User clicks on Signin link
     And User enters the username "<username>" and password "<password>" on signin popup
