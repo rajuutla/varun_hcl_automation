@@ -15,10 +15,14 @@ import io.cucumber.java.Scenario;
 
 public class Hooks {
 	
+	String browserType = System.getProperty("browser");
+	
 	@Before
 	public void initBrowser() {
 		//System.out.println("Before Hook");
-		DriverUtils.getDriver();
+		
+		if (!browserType.equals("api"))
+			DriverUtils.getDriver();
 	}
 	
 	
@@ -41,7 +45,8 @@ public class Hooks {
 	@After()
 	public void closeBrowser() {
 		//System.out.println("After Hook");
-		DriverUtils.tearDown();
+		if (!browserType.equals("api"))
+			DriverUtils.tearDown();
 	}	
 }
 
