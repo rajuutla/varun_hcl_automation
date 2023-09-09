@@ -35,7 +35,7 @@ Feature: Purchase Items feature
       | productType 							| productName | productQty |
       | Laptops,Phones, Monitors  | Sony vaio i5: MacBook Pro,Samsung galaxy s6: Iphone 6 32gb, Apple monitor 24	|1:2,1:2,2  | 
 
-  @Ignore
+  @PurchaseItems
   Scenario Outline: Purchase product(s) added in cart
   	Given User has Login into the application with username "username354@gmail.com" and password "abcd123"
     And User has added product "<productName>" and quantity <productQty> under category "<productType>" to cart
